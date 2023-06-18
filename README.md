@@ -1,3 +1,12 @@
+######################################## > INSERT PROJECT NAME HERE < ###################
+
+Base URL - https://travel-planner-vza0.onrender.com/
+Test route - /api/test
+
+- Start Command: `node server.js` for render.com
+
+############################################## BEIWEIS ORIGINAL STUFF ######################################################
+
 # README
 
 This is the [Express](https://expressjs.com) [Hello world](https://expressjs.com/en/starter/hello-world.html) example on [Render](https://render.com).
@@ -11,13 +20,6 @@ See https://render.com/docs/deploy-node-express-app or follow the steps below:
 Create a new web service with the following values:
 
 - Build Command: `yarn`
-- Start Command: `node app.js`
+- Start Command: `node server.js`
 
 That's it! Your web service will be live on your Render URL as soon as the build finishes.
-
-this is just test by misa
-Adding something new to Read me
-
-New New New
-
-new new new new - new branch test v3
