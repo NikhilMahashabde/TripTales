@@ -1,0 +1,10 @@
+// form
+// css (optional or whatevs or bootstrap)
+
+// form validation -
+//      check if user inputs are not empty,
+//      comply with our "reuirements e.g. The password must be a minimum of 8 characters, use letters, numbers and symbols. "
+//      password and password verify  = same.
+
+// axios stuff
+// submit
