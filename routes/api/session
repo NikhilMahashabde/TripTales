@@ -1,2 +1,0 @@
-const  sessionController=require('./middleware/session.js');
-app.use("/api/session",sessionController)
