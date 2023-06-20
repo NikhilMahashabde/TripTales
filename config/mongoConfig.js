@@ -1,3 +1,7 @@
+// we are using a object relationship mapper (ORM) called mongoose which handles database connection,
+// once we have a connection, a model for a collection is set up, and an object is exported which is then used to
+// modify data straight onto the database
+
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
