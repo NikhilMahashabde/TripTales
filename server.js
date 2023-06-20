@@ -5,12 +5,12 @@ const path = require("path");
 const mongoose = require("mongoose");
 const connectDB = require("./config/mongoConfig");
 const PORT = process.env.PORT || 3001;
-// const enableSession = require("./middleware/session");
+const enableSession = require("./middleware/session");
 
 //middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-// app.use(enableSession);
+app.use(enableSession);
 connectDB();
 
 //Public Routes
