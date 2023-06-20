@@ -1,0 +1,21 @@
+
+/* This part for user signup & login pages hover */
+#userLoginLink:hover{
+    color: #da5767;
+    text-decoration: none;
+}
+
+.form-control:focus {
+    color: #000000;
+    background-color: #ffffff;
+    border: 3px solid #da5767;
+    outline: 0;
+    box-shadow: none;
+}
+
+.btn-primary:hover {
+    background-color: #df8c96;
+    border-color: #df8c96;
+    transition: .3s;
+
+}
