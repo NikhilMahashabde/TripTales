@@ -1,2 +1,0 @@
-const userController=require('./controllers/usersController.js');
-app.use("/api/users",userController)
