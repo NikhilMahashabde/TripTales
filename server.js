@@ -5,7 +5,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const connectDB = require("./config/mongoConfig");
 const PORT = process.env.PORT || 3001;
-const enableSession = require("./middleware/session");
+const enableSession = require("./middleware/sessions");
 
 //middleware
 app.use(express.urlencoded({ extended: false }));
