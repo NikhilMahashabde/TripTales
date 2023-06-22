@@ -1,5 +1,5 @@
-const expressSession = require("express-session");
-const MongoStore = require("connect-mongo");
+import expressSession from "express-session";
+import MongoStore from "connect-mongo";
 
 const store = new MongoStore({
   mongoUrl: process.env.DATABASE_URI,
@@ -20,4 +20,4 @@ const enableSession = expressSession({
   },
 });
 
-module.exports = enableSession;
+export { enableSession };
