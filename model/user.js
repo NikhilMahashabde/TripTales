@@ -11,6 +11,8 @@ const userSchema = new Schema({
   passwordHash: {
     type: String,
   },
+  //adding trips to user
+  trips: tripSchema,
 });
 
 module.exports = mongoose.model("User", userSchema);
