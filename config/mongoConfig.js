@@ -2,7 +2,7 @@
 // once we have a connection, a model for a collection is set up, and an object is exported which is then used to
 // modify data straight onto the database
 
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
@@ -15,4 +15,4 @@ const connectDB = async () => {
   }
 };
 
-module.exports = connectDB;
+export { connectDB };

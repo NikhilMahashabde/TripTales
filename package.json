@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Travel Planner",
   "main": "server.js",
+  "type": "module",
   "repository": "https://github.com/NikhilMahashabde/Travel-Planner/",
   "author": "Render Developers",
   "license": "MIT",

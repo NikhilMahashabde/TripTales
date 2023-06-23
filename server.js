@@ -1,11 +1,22 @@
-require("dotenv").config();
-const express = require("express");
+import "dotenv/config";
+import express from "express";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import mongoose from "mongoose";
+import { connectDB } from "./config/mongoConfig.js";
+import { enableSession } from "./middleware/sessions.js";
+
+// Routes
+import registerRoute from "./routes/register.js";
+import loginRoute from "./routes/login.js";
+import logoutRoute from "./routes/logout.js";
+
+// Protected Routes
+import apiUsersRoute from "./routes/api/users.js";
+
 const app = express();
-const path = require("path");
-const mongoose = require("mongoose");
-const connectDB = require("./config/mongoConfig");
 const PORT = process.env.PORT || 3001;
-const enableSession = require("./middleware/sessions");
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 //middleware
 app.use(express.urlencoded({ extended: false }));
@@ -14,14 +25,14 @@ app.use(enableSession);
 connectDB();
 
 //Public Routes
-app.use("/register", require("./routes/register"));
-app.use("/login", require("./routes/login"));
-app.use("/logout", require("./routes/logout"));
+app.use("/register", registerRoute);
+app.use("/login", loginRoute);
+app.use("/logout", logoutRoute);
 app.use("/", express.static(path.join(__dirname, "client"))); // static file resources
 app.use("/js", express.static(path.join(__dirname, "client", "js")));
 
 // Protected Routes
-app.use("/api/users", require("./routes/api/users"));
+app.use("/api/users", apiUsersRoute);
 
 // Catch all 404
 app.all("*", (req, res) => {
