@@ -1,13 +1,3 @@
-// form
-// handling validation - no empty fields email and password
-// css (optional or whatevs or bootstrap)
-
-// submit
-
-// axios stuff
-
-// error handling - display invalid password return
-
 
 function userLogin(){
     const page = document.getElementById("page")
@@ -15,7 +5,7 @@ function userLogin(){
     const form = document.createElement("form");
     form.innerHTML = `
     <div id="container" >
-        <div class="card" style="width:500px; height: auto;">
+        <div id="card" style="width:500px; height: 300px;">
             <h2 style="padding-top: 1.5rem">Login</h2>
             <form id="login_form">
                 <div class="form-group">
@@ -27,7 +17,7 @@ function userLogin(){
 
                 <div class="d-flex flex-row align-items-center justify-content-between">
                     <a href="#" style="color: #333">Login</a>
-                <button type="submit" class="btn btn-primary" style="background: #da5767;" style="padding: 0.6rem 1.2rem;" style="border: 2px solid #da5767;">Create Account</button>
+                <button type="submit" class="btn btn-primary" style="background:#82bdcf;" style="padding: 0.6rem 1.2rem;" style="border: 2px solid #da5767;">Create Account</button>
                 </div>
             </form>
         </div>
@@ -72,20 +62,24 @@ page.replaceChildren(divBox)
     page.style.position="relative";
     page.style.fontFamily='PT Sans, sans-serif';
 
-    const formControl=document.getElementsByName('form-control')
-        formControl.style.backgroundColor = "#f8f9fa";
-        formControl.style.width = "300px";
-        formControl.style.padding = "20px";
-        formControl.style.marginBottom = "1.3rem";
+    const formControls = document.getElementsByClassName('form-control');
+    for (let i = 0; i < formControls.length; i++) {
+      formControls[i].style.backgroundColor = "#f8f9fa";
+      formControls[i].style.width = "300px";
+      formControls[i].style.padding = "20px";
+      formControls[i].style.marginBottom = "1.3rem";
+    }
 
     
-    const card=document.getElementsByClassName('card')
-        card.style.border='0.40rem solid #f8f9fa';
+    const card=document.getElementById('card')
+        card.style.border='0.40rem solid';
+        card.style.borderColor='#838375 ';
         card.style.top='10%';
         card.style.textAlign='center';
+        card.style.background='white'
 
     const container=document.getElementById('container');
-        container.style.border='5px solid';
+       
         container.style.position='absolute';
         container.style.top='50%';
         container.style.left='50%';
@@ -93,3 +87,4 @@ page.replaceChildren(divBox)
         container.style.padding='10px';
 
 }
+console.log("userLogin function page is working")  

@@ -1,7 +1,8 @@
 import User from "../model/user.js";
+import bcrypt from 'bcrypt';
 
 const handleNewUser = (request, response) => {
-  const { email, password, name, confirmPassword } = request.body;
+  const { email, password, name} = request.body;
   //filed missing
   if (!name || !email || !password) {
     response.status(400).json({ message: "missing field" });
