@@ -37,9 +37,9 @@ app.use("/api/users", apiUsersRoute);
 // Catch all 404
 app.all("*", (req, res) => {
   if (req.accepts("html")) {
-    res.sendStatus(404).sendFile(path.join(__dirname, "client", "404.html"));
+    res.status(404).sendFile(path.join(__dirname, "client", "404.html"));
   } else {
-    res.sendStatus(404).json({ error: "404 Not found" });
+    res.status(404).json({ error: "404 Not found" });
   }
 });
 

@@ -1,13 +1,15 @@
 import User from "../model/user.js";
-import bcrypt from 'bcrypt';
+import bcrypt from "bcrypt";
 
 const handleNewUser = (request, response) => {
-  const { email, password, name} = request.body;
+  console.log("request.body:", request.body);
+  const { email, password, name } = request.body;
   //filed missing
   if (!name || !email || !password) {
     response.status(400).json({ message: "missing field" });
     return;
   }
+
   //email duplicate error
   User.findOne({ email: email }).then((user) => {
     if (user) {
@@ -53,11 +55,11 @@ const handleNewUser = (request, response) => {
 
     //insert (register) user data into collection "users"
     User.create({
-      name: request.body.name,
-      email: request.body.email,
-      password: hashPassword,
+      name: name,
+      email: email,
+      passwordHash: hashPassword,
     }).then(() => {
-      response.json({ message: "success" });
+      response.json({ message: "New account created success" });
     });
   });
 };
