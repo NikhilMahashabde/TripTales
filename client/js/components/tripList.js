@@ -1,3 +1,5 @@
+//WIP - working on destination implementation
+
 export function renderTripList() {
   const page = document.getElementById("page");
   const paragraph = document.createElement("p");
@@ -17,6 +19,7 @@ function renderTrip(trip) {
   const name = document.createElement("h2");
   name.textContent = trip.name;
 
+  // WIP - working on destination implementation
   const destinations = document.createElement("h4");
   destinations.textContent = trip.destinations;
 
@@ -71,12 +74,14 @@ function renderEditForm(trip) {
   form.innerHTML = `
         <label for="name">Name:</label>
         <input type="text" name="name" value="${trip.name}">
+        <label for="name">Destination:</label>
+        <input type="text" name="destination" placeholder="Enter name of cities or countries" value="${trip.destinations}">
         <label for="start-date">Start Date: </label>
         <input type="date" name="start-date" value="${trip.startDate}">
         <label for="end-date">End Date: </label>
         <input type="date" name="end-date" value="${trip.endDate}">
-        <label for="description">Notes: </label>
-        <input type="text" name="notes" value="${trip.notes}">
+        <label for="tips">Tips: </label>
+        <input type="text" name="tips" value="${trip.tips}">
         <input type="submit">
     `;
 
@@ -86,7 +91,7 @@ function renderEditForm(trip) {
 
     const data = {
       name: formData.get("name"),
-      notes: formData.get("notes"),
+      tips: formData.get("tips"),
       startDate: formData.get("start-date"),
       endDate: formData.get("end-date"),
     };

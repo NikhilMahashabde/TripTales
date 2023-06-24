@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+
 mongoose.connect(process.env.DATABASE_URI, { useNewUrlParser: true });
 
 const tripSchema = new mongoose.Schema({
@@ -14,15 +15,16 @@ const tripSchema = new mongoose.Schema({
   startDate: {
     type: Date,
     required: true,
-    // validate: [startDateValidator, "Start Date must be less than End Date and after today"]
+    // TODO: validate: [startDateValidator, "Start Date must be less than End Date and after today"]
   },
   endDate: {
     type: Date,
     required: true,
-    // need to create dateValidator function
+    // TODO: need to create dateValidator function
     // validate: [dateValidator, "Start Date must be less than End Date"],
   },
   tips: {
+    //OpenAI API will generate tips for the trip
     type: String,
     required: false,
   },
@@ -80,27 +82,5 @@ const trip3 = new Trip({
 trip1.save();
 trip2.save();
 trip3.save();
-
-//Code below is irrelevant to the project for now
-Trip.insertMany([], function (err) {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log("Successfully saved all the trips to tripsDB");
-  }
-});
-
-Trip.find((err, trips) => {
-  if (err) {
-    console.log(err);
-  } else {
-    // console.log(trips);
-    trips.forEach((trip) => {
-      console.log(trip.name);
-    });
-  }
-});
-
-//CRUD OPERATIONS GO HERE
 
 mongoose.connection.close();
