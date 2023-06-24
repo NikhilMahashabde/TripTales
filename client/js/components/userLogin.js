@@ -1,27 +1,40 @@
+import { renderNavBar } from "/js/components/navbar.js";
+import { userRegister } from "./userRegistration.js";
+
 function userLogin() {
   const page = document.getElementById("page");
   const divBox = document.createElement("div");
   const form = document.createElement("form");
+
   form.innerHTML = `
-    <div id="container" >
+  <div id="container" >
         <div id="card" style="width:500px; height: 300px;">
             <h2 style="padding-top: 1.5rem">Login</h2>
             <form id="login_form">
                 <div class="form-group">
+                    <label style="display:inline-block;text-align: right;width: 105px;"> Email :</label>
                     <input type="email" class="form-control" placeholder="Email" name="userEmail" required>
                 </div>                 
                 <div class="form-group">
+                    <label style="display:inline-block;text-align: right;width: 105px;"> Password :</label>
                     <input type="password" class="form-control" placeholder="Password" name="userPassword" required>
                 </div>
 
-                <div class="d-flex flex-row align-items-center justify-content-between">
-                    <button type="submit" class="btn btn-primary" style="background:#82bdcf;" style="padding: 0.6rem 1.2rem;" style="border: 2px solid #da5767;">Login</button>
-                    <a href="#" style="color: #333">Sign up</a>
+                <div id="form-button flex-row align-items-center justify-content-between">
+                    <button id="login_submit" type="submit" class="btn btn-primary" style="background:#82bdcf;" style="padding: 0.6rem 1.2rem;" style="border: 2px solid #da5767;">Login</button>
+
+                    
+                   
                 </div>
             </form>
+       
         </div>
     </div>
+
+    
     `;
+
+
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -35,7 +48,12 @@ function userLogin() {
     axios
       .post("/login", userData)
       .then((res) => {
+        const nameData=res.data.name
         console.log(res.data);
+        renderNavBar(nameData)
+        form.setAttribute('hidden','')
+       ////need user page function () to refreshing the page./////
+
       })
       .catch((error) => {
         console.log(error);
@@ -43,16 +61,15 @@ function userLogin() {
         if (error.response.status === 401 || error.response.status === 400) {
           console.log(error.response);
           const errorMessage = document.createElement("div");
-          const errorForm = document.createElement("form");
           errorMessage.innerHTML = `
-              <h2>Error</h2>
-              <p>${error.response.data.message}</p>
+              <h2>Error: ${error.response.data.message}</h2>
          
             `;
           errorMessage.style.color = "red";
           errorMessage.style.textAlign = "center";
+          errorMessage.style.backgroundColor = "white";
 
-          page.appendChild(errorMessage);
+          form.appendChild(errorMessage);
         }
       });
   });
@@ -61,7 +78,6 @@ function userLogin() {
   page.replaceChildren(divBox);
 
   page.style.position = "relative";
-  page.style.fontFamily = "PT Sans, sans-serif";
 
   const formControls = document.getElementsByClassName("form-control");
   for (let i = 0; i < formControls.length; i++) {
@@ -85,6 +101,30 @@ function userLogin() {
   container.style.left = "50%";
   container.style.transform = "translate(-50%, 0%)";
   container.style.padding = "10px";
+
+  changeToSignupFormBtn()
 }
 
+
+function changeToSignupFormBtn(){
+  //Sign up button go to "userRegister()"
+  const loginBtn=document.getElementById('form-button flex-row align-items-center justify-content-between')
+    const signup_button=document.createElement('div');
+    signup_button.id='userRegister';
+    signup_button.innerHTML=`
+    <button id="register_page" type="submit" class="btn btn-primary" style="background:#82bdcf;" style="padding: 0.6rem 1.2rem;" style="border: 2px solid #da5767;">Sign up</button>
+      `;
+    signup_button.addEventListener('click',()=>userRegister())
+    loginBtn.appendChild(signup_button)
+
+
+
+}
+
+
 export { userLogin };
+
+
+
+
+
