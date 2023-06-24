@@ -1,15 +1,47 @@
-const User = require("../model/user");
+import bcrypt from "bcrypt";
+import User from "../model/user.js";
 
-const handleLogin = {
-  //misa's code
+const verifyLoggedIn = (request, response) => {
+  if (request.session.email) {
+    response.json({ message: "user successfully logged in" });
+  } else {
+    response.status(401).json({ message: "user is not logged in" });
+    return;
+  }
 };
 
-const handleLogout = {
-  //misa's code
+//Logout
+const handleLogout = (request, response) => {
+  request.session.destroy();
+  response.json({ message: "Logout success" });
 };
 
-const verifyLoggedIn = {
-  // misa's code
+//login
+const handleLogin = (request, response) => {
+  console.log("request.body on login:", request.body);
+  const { email, password } = request.body;
+  //filed missing
+  if (!email || !password) {
+    response.status(400).json({ message: "Missing Email or Password" });
+    return;
+  }
+
+  User.findOne({ email: email }).then((user) => {
+    if (user) {
+      //compare input password and existing password match
+      const isValidPassword = bcrypt.compareSync(password, user.passwordHash);
+
+      //if it matched
+      if (isValidPassword) {
+        request.session.email = email;
+        response.json({ message: "Logged in Successfully", name: user.name });
+      } else {
+        response.status(401).json({ message: "Incorrect password" });
+      }
+    } else {
+      response.status(401).json({ message: "User could not be found" });
+    }
+  });
 };
 
-module.exports = { handleLogin, handleLogout };
+export { handleLogin, handleLogout, verifyLoggedIn };

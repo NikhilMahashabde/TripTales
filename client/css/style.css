@@ -1,0 +1,103 @@
+/* This part for main homepage.js part */
+
+#homepage_main_container{
+    background-color: #838375;
+}
+
+body{
+    background:co;
+}
+
+header{
+    margin: 15px;
+    background-color:rgba(251, 231, 231, 0.5);
+}
+
+#header-icon-list {
+    display:flex;
+    justify-content: space-around;
+    color: antiquewhite;
+}
+#header-icon-list li{
+    list-style: none;
+    text-decoration: none;
+}
+
+#header-icon-list a{
+    color:antiquewhite;
+
+}
+
+
+#main-container{
+    width:auto;
+    height:500px;
+}
+
+#title-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(251, 231, 231, 0.5);
+    width: 500px;
+    text-align: center;
+    font-size: 18px;
+  }
+
+#main_page_user_icon{
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ 
+    width: 500px;
+    text-align: center;
+    font-size: 18px;
+}
+
+#main_page_user_icon_list{
+    display:flex;
+    justify-content:center;
+    list-style: none;
+    text-decoration: none;
+}
+
+#main_page_user_icon_list li{
+    font-size: larger;
+    font-weight: 400;
+    width:200px;
+    height: 50px;
+    background-color: rgba(67, 63, 52, 0.5);
+  
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+
+}
+
+
+
+
+/* This part for user signup & login pages hover */
+#userLoginLink:hover{
+    color: #da5767;
+    text-decoration: none;
+}
+
+.form-control:focus {
+    color: #000000;
+    background-color: #ffffff;
+    border: 3px solid #da5767;
+    outline: 0;
+    box-shadow: none;
+}
+
+.btn-primary:hover {
+    background-color: #df8c96;
+    border-color: #df8c96;
+    transition: .3s;
+
+}

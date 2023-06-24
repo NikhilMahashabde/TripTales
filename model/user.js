@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -15,4 +16,7 @@ const userSchema = new Schema({
   trips: tripSchema,
 });
 
-module.exports = mongoose.model("User", userSchema);
+//Converting from commonJS to ESM
+const userModel = mongoose.model("User", userSchema);
+
+export default userModel;
