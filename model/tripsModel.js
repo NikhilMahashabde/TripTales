@@ -84,3 +84,5 @@ trip2.save();
 trip3.save();
 
 mongoose.connection.close();
+
+export default tripSchema;
