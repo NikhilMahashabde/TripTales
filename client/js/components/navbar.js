@@ -1,5 +1,4 @@
 import { renderLogout } from "./userlogoutform.js";
-// import { userRegister } from "./userRegistration.js";
 
 function renderNavBar(nameData) {
   const navBar = document.getElementById("header-nav");
@@ -7,7 +6,6 @@ function renderNavBar(nameData) {
   axios.get("/login")
       .then((response)=>{
         console.log("check loginverifycation; ",response.data)
-        // axios.post("/login").then((user)=>console.log("user: ",user))
 
           navBar.innerHTML = `
             <nav>
