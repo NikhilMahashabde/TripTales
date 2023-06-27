@@ -13,8 +13,6 @@ const userSchema = new Schema({
   passwordHash: {
     type: String,
   },
-  //adding trips to user
-  trips: tripSchema,
 });
 
 //Converting from commonJS to ESM
