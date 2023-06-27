@@ -13,6 +13,7 @@ import logoutRoute from "./routes/logout.js";
 
 // Protected Routes
 import apiUsersRoute from "./routes/api/users.js";
+import apiTrips from "./routes/api/trips.js";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -33,6 +34,7 @@ app.use("/js", express.static(path.join(__dirname, "client", "js")));
 
 // Protected Routes
 app.use("/api/users", apiUsersRoute);
+app.use("/api/trips", apiTrips);
 
 // Catch all 404
 app.all("*", (req, res) => {

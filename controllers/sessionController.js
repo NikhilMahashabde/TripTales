@@ -34,7 +34,11 @@ const handleLogin = (request, response) => {
       //if it matched
       if (isValidPassword) {
         request.session.email = email;
-        response.json({ message: "Logged in Successfully", name: user.name });
+        response.json({
+          message: "Logged in Successfully",
+          name: user.name,
+          email: user.email,
+        });
       } else {
         response.status(401).json({ message: "Incorrect password" });
       }
