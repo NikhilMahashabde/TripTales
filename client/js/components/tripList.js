@@ -1,9 +1,7 @@
 //WIP - working on destination implementation
 
-/*
-test1@example.com
-Password1
-*/
+import getTips from "./getTips.js";
+
 //ALL TRIPS
 // render trip list
 function renderTripList() {
@@ -138,6 +136,7 @@ function renderEditForm(trip) {
       destinations,
       startDate: new Date(formData.get("start-date")),
       endDate: new Date(formData.get("end-date")),
+      tips: getTips,
     };
     // console.log(data);
     axios

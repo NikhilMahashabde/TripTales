@@ -1,5 +1,6 @@
 console.log("Hello from addTrip.js", axios);
 import renderTripList from "./tripList.js";
+import getTips from "./getTips.js";
 
 function addTripForm() {
   const page = document.getElementById("page");
@@ -62,7 +63,7 @@ function addTripForm() {
       startDate: new Date(formData.get("startDate")),
       endDate: new Date(formData.get("endDate")),
       //TODO: get userID
-      userID: localStorage.getItem("userID"),
+      tips: getTips,
     };
     // console.log(data);
     axios
