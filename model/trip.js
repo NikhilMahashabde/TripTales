@@ -26,6 +26,10 @@ const tripSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+    userID: {
+    type: mongoose.ObjectId,
+    required: true,
+  },
 });
 
 const tripModel = mongoose.model("Trip", tripSchema);
