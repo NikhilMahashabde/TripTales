@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import tripSchema from "./tripsModel.js";
 
 const Schema = mongoose.Schema;
 

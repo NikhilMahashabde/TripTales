@@ -1,10 +1,9 @@
-import { Configuration, OpenAIApi } from "@openai/api";
-//import { Configuration, OpenAIApi } from "openai";
+import { Configuration, OpenAIApi } from "openai";
 
 //Get the API key from the .env file
 const API_KEY = process.env.OPENAI_API_KEY;
 
-async function getTips(destination) {
+async function getTips(destinations) {
   //Short circuit if API key is missing
   if (!API_KEY) {
     console.error("API_KEY environment variable not set.");
@@ -22,7 +21,9 @@ async function getTips(destination) {
       {
         role: "user",
         //below is the prompt that is sent to the API
-        content: `Today is ${new Date().toISOString()}. I am planning a trip to ${destination} and would like some tips on what to do there. Only give me the tips and nothing else.`,
+        content: `Today is ${new Date().toISOString()}. I am planning a trip to ${destinations.join(
+          ", "
+        )} and would like some tips on what to do there. Only give me the tips and nothing else.`,
       },
     ],
   });

@@ -1,6 +1,5 @@
 console.log("Hello from addTrip.js", axios);
-import renderTripList from "./tripList.js";
-import getTips from "./getTips.js";
+import { renderTripList } from "./tripList.js";
 
 function addTripForm() {
   const page = document.getElementById("page");
@@ -62,10 +61,9 @@ function addTripForm() {
       destinations,
       startDate: new Date(formData.get("startDate")),
       endDate: new Date(formData.get("endDate")),
-      //TODO: get userID
-      tips: getTips,
+      //TODO: get userID from session
     };
-    // console.log(data);
+    console.log(data);
     axios
       .post("/api/trips", data)
       .then((response) => {

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { ObjectId } from "mongodb";
 
 const tripSchema = new mongoose.Schema({
   name: {
@@ -26,7 +27,7 @@ const tripSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-    userID: {
+  userID: {
     type: mongoose.ObjectId,
     required: true,
   },

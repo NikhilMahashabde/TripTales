@@ -1,4 +1,5 @@
 import Trip from "../model/trip.js";
+import getTips from "./getOpenaiTips.js";
 
 const getAllTrips = async (req, res) => {
   try {
@@ -17,7 +18,9 @@ const handleNewTrip = async (req, res) => {
     destinations: req.body.destinations,
     startDate: req.body.startDate,
     endDate: req.body.endDate,
+    // tips: await getTips(req.body.destinations),
   };
+  console.log("newTrip:", newTrip);
 
   if (!Object.values(newTrip))
     return res.status(422).json({ message: "Missing data input" });
