@@ -17,7 +17,7 @@ function addTripForm() {
     <input type="date" id="startDate" name="startDate" required><br>
     <label for="endDate">End Date:</label><br>
     <input type="date" id="endDate" name="endDate" required><br>
-    <input type="submit" value="Save Trip">
+    <input type="submit" value="Save New Trip">
   `;
   const errorMessage = document.createElement("h3");
   page.replaceChildren(heading, form, errorMessage);
