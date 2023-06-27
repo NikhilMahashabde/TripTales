@@ -1,8 +1,12 @@
+import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
+import userModel from "./user";
 
-mongoose.connect(process.env.DATABASE_URI, { useNewUrlParser: true });
+// mongoose.connect(process.env.DATABASE_URI, { useNewUrlParser: true });
 
-const tripSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const tripSchema = new Schema({
   name: {
     type: String,
     required: [true, "Trip must have a name."],
@@ -28,8 +32,14 @@ const tripSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  userID: {
+    type: mongoose.ObjectId,
+    required: true,
+  },
 });
-
+const tripModel = mongoose.model("Trip", tripSchema);
+export default tripModel;
+/*
 const Trip = mongoose.model("Trip", tripSchema);
 //comment the code below out after the first run
 const trip = new Trip({
@@ -84,5 +94,4 @@ trip2.save();
 trip3.save();
 
 mongoose.connection.close();
-
-export default tripSchema;
+*/
