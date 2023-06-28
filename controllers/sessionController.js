@@ -20,6 +20,9 @@ const handleLogout = (request, response) => {
 const handleLogin = (request, response) => {
   console.log("request.body on login:", request.body);
   const { email, password } = request.body;
+
+ console.log ("check user login ID :",request.sessionID) 
+
   //filed missing
   if (!email || !password) {
     response.status(400).json({ message: "Missing Email or Password" });
