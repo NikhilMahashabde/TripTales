@@ -28,7 +28,7 @@ const tripSchema = new mongoose.Schema({
     required: false,
   },
   userID: {
-    type: mongoose.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
 });
