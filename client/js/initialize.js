@@ -4,19 +4,6 @@ import { renderNavBar } from "/js/components/navbar.js";
 renderNavBar();
 renderHomePage();
 
-// Lyli’s playground
-const params = new URLSearchParams(window.location.search);
-const searchTerm = params.get("test");
-import addTripForm from "/js/components/addTrip.js";
-import { renderTripList } from "/js/components/tripList.js";
-if (searchTerm === "addTrip") {
-  addTripForm();
-}
-if (searchTerm === "editTrip") {
-  renderTripList();
-}
-/*
-
 const backGroundImg = [
   "https://res.klook.com/image/upload/Mobile/City/swox6wjsl5ndvkv5jvum.jpg",
   "https://idsb.tmgrup.com.tr/ly/uploads/images/2021/09/24/146502.jpg",
@@ -42,4 +29,3 @@ const backGroundRandomIndex = Math.floor(Math.random() * backGroundImg.length);
 // get random background item
 const backgroundItem = backGroundImg[backGroundRandomIndex];
 document.body.style.background = `url(${backgroundItem})no-repeat center 0 / cover`;
-*/
