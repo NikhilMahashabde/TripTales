@@ -1,103 +1,177 @@
+/* RESET CSS */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+li {
+  list-style: "🛫";
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* END OF CSS RESET */
+
 /* This part for main homepage.js part */
 
-#homepage_main_container{
-    background-color: #838375;
+#homepage_main_container {
+  background-color: #838375;
 }
 
-body{
-    background:co;
+body {
+  background: co;
 }
 
-header{
-    margin: 15px;
-    background-color:rgba(251, 231, 231, 0.5);
+header {
+  margin: 15px;
+  background-color: rgba(251, 231, 231, 0.5);
 }
 
 #header-icon-list {
-    display:flex;
-    justify-content: space-around;
-    color: antiquewhite;
+  display: flex;
+  justify-content: space-around;
+  color: antiquewhite;
 }
-#header-icon-list li{
-    list-style: none;
-    text-decoration: none;
-}
-
-#header-icon-list a{
-    color:antiquewhite;
-
+#header-icon-list li {
+  list-style: none;
+  text-decoration: none;
 }
 
+#header-icon-list a {
+  color: antiquewhite;
+}
 
-#main-container{
-    width:auto;
-    height:500px;
+#main-container {
+  width: auto;
+  height: 500px;
 }
 
 #title-message {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(251, 231, 231, 0.5);
-    width: 500px;
-    text-align: center;
-    font-size: 18px;
-  }
-
-#main_page_user_icon{
-    position: fixed;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, -50%);
- 
-    width: 500px;
-    text-align: center;
-    font-size: 18px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(251, 231, 231, 0.5);
+  width: 500px;
+  text-align: center;
+  font-size: 18px;
 }
 
-#main_page_user_icon_list{
-    display:flex;
-    justify-content:center;
-    list-style: none;
-    text-decoration: none;
+#main_page_user_icon {
+  position: fixed;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 500px;
+  text-align: center;
+  font-size: 18px;
 }
 
-#main_page_user_icon_list li{
-    font-size: larger;
-    font-weight: 400;
-    width:200px;
-    height: 50px;
-    background-color: rgba(67, 63, 52, 0.5);
-  
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-
+#main_page_user_icon_list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  text-decoration: none;
 }
 
+#main_page_user_icon_list li {
+  font-size: larger;
+  font-weight: 400;
+  width: 200px;
+  height: 50px;
+  background-color: rgba(67, 63, 52, 0.5);
 
-
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
 
 /* This part for user signup & login pages hover */
-#userLoginLink:hover{
-    color: #da5767;
-    text-decoration: none;
+#userLoginLink:hover {
+  color: #da5767;
+  text-decoration: none;
 }
 
 .form-control:focus {
-    color: #000000;
-    background-color: #ffffff;
-    border: 3px solid #da5767;
-    outline: 0;
-    box-shadow: none;
+  color: #000000;
+  background-color: #ffffff;
+  border: 3px solid #da5767;
+  outline: 0;
+  box-shadow: none;
 }
 
 .btn-primary:hover {
-    background-color: #df8c96;
-    border-color: #df8c96;
-    transition: .3s;
-
+  background-color: #df8c96;
+  border-color: #df8c96;
+  transition: 0.3s;
 }
