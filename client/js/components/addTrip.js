@@ -1,4 +1,3 @@
-console.log("Hello from addTrip.js", axios);
 import { renderTripList } from "./tripList.js";
 
 function addTripForm() {
@@ -9,14 +8,17 @@ function addTripForm() {
   form.innerHTML = `
   <label for="name">Name:</label><br>
     <input type="text" id="name" name="name" required><br>
-    <label for="destinations">Destinations:</label><br>
-    <input type="text" id="destinations" name="destinations"><button id="addMoreDestinations">Add More</button><br>
-    <ul id="destinationList">
-    </ul>
+
     <label for="startDate">Start Date:</label><br>
     <input type="date" id="startDate" name="startDate" required><br>
     <label for="endDate">End Date:</label><br>
     <input type="date" id="endDate" name="endDate" required><br>
+
+    <label for="destinations">Destinations:</label><br>
+    <input type="text" id="destinations" name="destinations"><button id="addMoreDestinations">Add More</button><br>
+    <ul id="destinationList">
+    </ul>
+
     <input type="submit" value="Save New Trip">
   `;
   const errorMessage = document.createElement("h3");
@@ -61,7 +63,6 @@ function addTripForm() {
       destinations,
       startDate: new Date(formData.get("startDate")),
       endDate: new Date(formData.get("endDate")),
-      //TODO: get userID from session
     };
     console.log(data);
     axios
