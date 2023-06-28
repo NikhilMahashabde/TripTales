@@ -19,7 +19,7 @@ const handleNewTrip = async (req, res) => {
     startDate: req.body.startDate,
     endDate: req.body.endDate,
     userID: req.session.user._id,
-    // tips: await getTips(req.body.destinations),
+    tips: await getTips(req.body.destinations),
   };
   console.log("newTrip:", newTrip);
 
