@@ -11,13 +11,14 @@ const getAllTrips = async (req, res) => {
 };
 
 const handleNewTrip = async (req, res) => {
-  console.log("request.body:", req.body);
+  // console.log("request.body:", req.session);
 
   const newTrip = {
     name: req.body.name,
     destinations: req.body.destinations,
     startDate: req.body.startDate,
     endDate: req.body.endDate,
+    userID: req.session.user._id,
     // tips: await getTips(req.body.destinations),
   };
   console.log("newTrip:", newTrip);
@@ -29,6 +30,7 @@ const handleNewTrip = async (req, res) => {
     await Trip.create(newTrip);
     res.json({ message: "Successfully created", data: newTrip });
   } catch (error) {
+    // console.error(error);
     res.status(400).json({ error: "Failed to created trip", data: newTrip });
   }
 };
@@ -36,7 +38,7 @@ const handleNewTrip = async (req, res) => {
 const handleEditTrip = async (req, res) => {
   console.log("edit data input:", req.params.id, req.body);
 
-  _id = req.params.id;
+  const _id = req.params.id;
 
   const updateData = {
     name: req.body.name ?? undefined,
@@ -64,7 +66,8 @@ const handleEditTrip = async (req, res) => {
 };
 
 const handleDeleteTrip = async (req, res) => {
-  _id = req.params.id;
+  // console.log("delete data input:", req.params.id);
+  const _id = req.params.id;
 
   try {
     await Trip.findByIdAndRemove(_id);
