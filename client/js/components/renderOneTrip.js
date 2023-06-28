@@ -44,8 +44,10 @@ function renderTrip(trip) {
   }
 
   // render OpenAI tips
-  const tips = document.createElement("p");
-  tips.textContent = trip.tips;
+  const tips = document.createElement("div");
+  const tipsTitle = document.createElement("h3");
+  tipsTitle.textContent = "OpenAI Tips";
+  tips.innerHTML = trip.tips;
 
   // DELETE BTN
   const deleteBtn = document.createElement("button");
@@ -78,6 +80,7 @@ function renderTrip(trip) {
     startDate,
     endDate,
     destinationsList,
+    tipsTitle,
     tips,
     deleteBtn,
     editDiv
