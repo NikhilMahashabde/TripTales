@@ -8,6 +8,7 @@ const tripSchema = new mongoose.Schema({
   },
   destinations: {
     type: Array,
+
     required: true,
     min: [1, "Trip must have at least 1 destination, got none."],
   },
