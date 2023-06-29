@@ -1,5 +1,6 @@
 import { renderNavBar } from "/js/components/navbar.js";
 import { userRegister } from "./userRegistration.js";
+import { renderTripList } from "./tripList.js";
 
 function userLogin() {
   const page = document.getElementById("page");
@@ -34,8 +35,6 @@ function userLogin() {
     
     `;
 
-
-
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -48,12 +47,12 @@ function userLogin() {
     axios
       .post("/login", userData)
       .then((res) => {
-        const nameData=res.data.name
+        const nameData = res.data.name;
         console.log(res.data);
-        renderNavBar(nameData)
-        form.setAttribute('hidden','')
-       ////need user page function () to refreshing the page./////
-
+        renderNavBar(nameData);
+        form.setAttribute("hidden", "");
+        renderTripList();
+        ////need user page function () to refreshing the page./////
       })
       .catch((error) => {
         console.log(error);
@@ -102,29 +101,21 @@ function userLogin() {
   container.style.transform = "translate(-50%, 0%)";
   container.style.padding = "10px";
 
-  changeToSignupFormBtn()
+  changeToSignupFormBtn();
 }
 
-
-function changeToSignupFormBtn(){
+function changeToSignupFormBtn() {
   //Sign up button go to "userRegister()"
-  const loginBtn=document.getElementById('form-button flex-row align-items-center justify-content-between')
-    const signup_button=document.createElement('div');
-    signup_button.id='userRegister';
-    signup_button.innerHTML=`
+  const loginBtn = document.getElementById(
+    "form-button flex-row align-items-center justify-content-between"
+  );
+  const signup_button = document.createElement("div");
+  signup_button.id = "userRegister";
+  signup_button.innerHTML = `
     <button id="register_page" type="submit" class="btn btn-primary" style="background:#82bdcf;" style="padding: 0.6rem 1.2rem;" style="border: 2px solid #da5767;">Sign up</button>
       `;
-    signup_button.addEventListener('click',()=>userRegister())
-    loginBtn.appendChild(signup_button)
-
-
-
+  signup_button.addEventListener("click", () => userRegister());
+  loginBtn.appendChild(signup_button);
 }
 
-
 export { userLogin };
-
-
-
-
-
