@@ -86,11 +86,11 @@ select {
 }
 
 body {
-  background: co;
+  font-family:ui-sans-serif;
 }
 
 header {
-  margin: 15px;
+  /* margin: 15px; */
   background-color: rgba(251, 231, 231, 0.5);
 }
 

@@ -8,31 +8,54 @@ function userLogin() {
   const form = document.createElement("form");
 
   form.innerHTML = `
-  <div id="container" >
-        <div id="card" style="width:500px; height: 300px;">
-            <h2 style="padding-top: 1.5rem">Login</h2>
-            <form id="login_form">
-                <div class="form-group">
-                    <label style="display:inline-block;text-align: right;width: 105px;"> Email :</label>
-                    <input type="email" class="form-control" placeholder="Email" name="userEmail" required>
-                </div>                 
-                <div class="form-group">
-                    <label style="display:inline-block;text-align: right;width: 105px;"> Password :</label>
-                    <input type="password" class="form-control" placeholder="Password" name="userPassword" required>
-                </div>
+  <section class="container forms">
+  <div class="form login">
+      <div class="form-content">
+          <header id='login_signup_header'>Login</header>
+          <div id="error_message_display"></div>
+         
+              <div class="field input-field">
+                  <input type="email" placeholder="Email" class="input" name="userEmail" require>
+              </div>
 
-                <div id="form-button flex-row align-items-center justify-content-between">
-                    <button id="login_submit" type="submit" class="btn btn-primary" style="background:#82bdcf;" style="padding: 0.6rem 1.2rem;" style="border: 2px solid #da5767;">Login</button>
+              <div class="field input-field">
+                  <input type="password" placeholder="Password" class="password" name="userPassword" require>
+                  <i class='bx bx-hide eye-icon'></i>
+              </div>
 
-                    
-                   
-                </div>
-            </form>
-       
-        </div>
-    </div>
+              <div class="form-link">
+                  <a href="#" class="forgot-pass">Forgot password?</a>
+              </div>
 
-    
+              <div class="field button-field">
+                  <button type="submit">Login</button>
+              </div>
+
+
+          <div class="form-link">
+              <span id='form-button flex-row align-items-center justify-content-between'>Don't have an account? </span>
+          </div>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="media-options">
+          <a href="#" class="field facebook">
+              <i class='bx bxl-facebook facebook-icon'></i>
+              <span>Login with Facebook</span>
+          </a>
+      </div>
+
+      <div class="media-options">
+          <a href="#" class="field google">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png" alt="" class="google-img">
+              <span>Login with Google</span>
+          </a>
+      </div>
+
+  </div>
+  </section>
+
     `;
 
   form.addEventListener("submit", (event) => {
@@ -59,65 +82,43 @@ function userLogin() {
       .catch((error) => {
         console.log(error);
 
-        // // if (error.response.status === 401 || error.response.status === 400) {
-        // //   console.log(error);
-        // //   const errorMessage = document.createElement("div");
-        // //   errorMessage.innerHTML = `
-        // //       <h2>Error: ${error.response.data.message}</h2>
+        if (error.response.status === 401 || error.response.status === 400) {
+          console.log(error.response);
+          const errorDiv=document.getElementById('error_message_display')
+          const errorMessage = document.createElement("div");
+          errorMessage.innerHTML = `
+              <h2>Error: ${error.response.data.message}</h2>
+         
+            `;
+          errorMessage.style.color = "red";
+          errorMessage.style.textAlign = "center";
+          errorMessage.style.backgroundColor = "white";
 
-        // //     `;
-        // //   errorMessage.style.color = "red";
-        // //   errorMessage.style.textAlign = "center";
-        // //   errorMessage.style.backgroundColor = "white";
-
-        // //   form.appendChild(errorMessage);
-        // }
+          errorDiv.replaceChildren(errorMessage,errorMessage);
+        }
       });
   });
 
   divBox.appendChild(form);
   page.replaceChildren(divBox);
 
-  page.style.position = "relative";
+  changeToSignupFormBtn()
 
-  const formControls = document.getElementsByClassName("form-control");
-  for (let i = 0; i < formControls.length; i++) {
-    formControls[i].style.backgroundColor = "#f8f9fa";
-    formControls[i].style.width = "300px";
-    formControls[i].style.padding = "20px";
-    formControls[i].style.marginBottom = "1.3rem";
-  }
-
-  const card = document.getElementById("card");
-  card.style.border = "0.40rem solid";
-  card.style.borderColor = "#838375 ";
-  card.style.top = "10%";
-  card.style.textAlign = "center";
-  card.style.background = "white";
-
-  const container = document.getElementById("container");
-
-  container.style.position = "absolute";
-  container.style.top = "50%";
-  container.style.left = "50%";
-  container.style.transform = "translate(-50%, 0%)";
-  container.style.padding = "10px";
-
-  changeToSignupFormBtn();
+  
 }
 
-function changeToSignupFormBtn() {
+function changeToSignupFormBtn(){
   //Sign up button go to "userRegister()"
-  const loginBtn = document.getElementById(
-    "form-button flex-row align-items-center justify-content-between"
-  );
-  const signup_button = document.createElement("div");
-  signup_button.id = "userRegister";
-  signup_button.innerHTML = `
-    <button id="register_page" type="submit" class="btn btn-primary" style="background:#82bdcf;" style="padding: 0.6rem 1.2rem;" style="border: 2px solid #da5767;">Sign up</button>
+  const loginBtn=document.getElementById('form-button flex-row align-items-center justify-content-between')
+    const signup_button=document.createElement('div');
+    signup_button.id='userRegister';
+    signup_button.innerHTML=`
+    <p id="register_page" class="link signup-link" style='text-decoration: underline; color:blue; cursor: pointer;'>Signup</p>
+    
       `;
-  signup_button.addEventListener("click", () => userRegister());
-  loginBtn.appendChild(signup_button);
+    signup_button.addEventListener('click',()=>userRegister())
+    loginBtn.appendChild(signup_button)
+
 }
 
 export { userLogin };

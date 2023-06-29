@@ -9,38 +9,60 @@ function userRegister() {
   const form = document.createElement("form");
 
   form.innerHTML = `
-    <div id="container" style="width:500px; height: 300px;">
-        <div id="card" >
-            <h2 style="padding-top: 1.5rem">Register</h2>
-            <form>
-                <div id="form-group">
-                    <label style="display:inline-block;text-align: right;width: 130px;"> Name :</label>
-                    <input type="text" class="form-control" id="name" placeholder="Name" name="userName" required>
-                </div>
-                <div id="form-group">
-                    <label style="display:inline-block;text-align: right;width: 130px;"> Email :</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email" name="userEmail" required>
-                </div>
-                                    
-                                    
-                <div id="form-group">
-                    <label style="display:inline-block;text-align: right;width: 130px;"> Password :</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="userPassword" required>
-                </div>
+  <section class="container forms">
+    <div class="form signup">
+        <div class="form-content">
+          <header id='login_signup_header'>Sign up</header>
+          <div id="error_message_display"></div>
+         
+          <form action="#">
+              <div class="field input-field">
+                  <input type="text" placeholder="User name" class="input" name="userName">
+              </div>
+              <div class="field input-field">
+                  <input type="email" placeholder="Email" class="input" name="userEmail">
+              </div>
 
-                <div id="form-group">
-                  <label style="display:inline-block;text-align: right;width: 130px;"> Confirm Password :</label>
-                  <input type="password" class="form-control" id="confirmed_password" placeholder="confirmed Password" name="confirmedPassword" required>
-                </div>
+              <div class="field input-field">
+                  <input type="password" placeholder="Create password" class="password" name="userPassword">
+              </div>
 
-                <div id="form-button flex-row align-items-center justify-content-between">
-                    <button type="submit" class="btn btn-primary" style="background: #82bdcf;" style="padding: 0.6rem 1.2rem;" style="border: 2px solid #557d89;">Create Account</button>
-                    
-                </div>
-            </form>
-        </div>
+              <div class="field input-field">
+                  <input type="password" placeholder="Confirm password" class="password" name="confirmedPassword">
+                  <i class='bx bx-hide eye-icon'></i>
+              </div>
+
+              <div class="field button-field">
+                  <button type="submit" >Signup</button>
+              </div>
+          </form>
+
+
+          <div class="form-link">
+              <span id='form-button flex-row align-items-center justify-content-between'>Don't have an account? </span>
+          </div>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="media-options">
+          <a href="#" class="field facebook">
+              <i class='bx bxl-facebook facebook-icon'></i>
+              <span>Login with Facebook</span>
+          </a>
+      </div>
+
+      <div class="media-options">
+          <a href="#" class="field google">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png" alt="" class="google-img">
+              <span>Login with Google</span>
+          </a>
+      </div>
+
     </div>
-    `;
+  </section>
+
+`;
 
   
 
@@ -74,6 +96,7 @@ function userRegister() {
 
           if (error.response.status === 400) {
             console.log(error.response);
+            const errorDiv=document.getElementById('error_message_display')
             const errorMessage = document.createElement("div");
             errorMessage.innerHTML = `
               
@@ -84,12 +107,13 @@ function userRegister() {
             errorMessage.style.textAlign = "center";
             errorMessage.style.backgroundColor="white"
 
-            page.replaceChildren(form,errorMessage);
+            errorDiv.replaceChildren(errorMessage,errorMessage);
           }
         });
 
       //if confirm password value & password value not matching
     } else {
+      const errorDiv=document.getElementById('error_message_display')
       const errorMessage = document.createElement("div");
  
       errorMessage.innerHTML = `
@@ -99,60 +123,27 @@ function userRegister() {
       errorMessage.style.textAlign = "center";
       errorMessage.style.backgroundColor="white"
 
-      page.replaceChildren(form,errorMessage);
+      errorDiv.replaceChildren(errorMessage,errorMessage)
     }
   });
-
-
-
-
 
   divBox.appendChild(form);
   page.replaceChildren(divBox);
 
 
-
-  page.style.position = "relative";
-
-  const formControls = document.getElementsByClassName("form-control");
-  for (let i = 0; i < formControls.length; i++) {
-    formControls[i].style.backgroundColor = "#f8f9fa";
-    formControls[i].style.width = "300px";
-    formControls[i].style.padding = "20px";
-    formControls[i].style.marginBottom = "1.3rem";
-  }
-
-  const card = document.getElementById("card");
-  card.style.border = "0.40rem solid ";
-  card.style.borderColor = "#838375 ";
-  card.style.top = "10%";
-  card.style.textAlign = "center";
-  card.style.background = "white";
-
-  const container = document.getElementById("container");
-
-  container.style.position = "absolute";
-  container.style.top = "50%";
-  container.style.left = "50%";
-  container.style.transform = "translate(-50%, 0%)";
-  container.style.padding = "10px";
-
-
   changeToLoginFormBtn()
 }
 
-
-
 function changeToLoginFormBtn(){
-      //Login button to go to userLogin()
-      const loginBtn=document.getElementById('form-button flex-row align-items-center justify-content-between')
-      const login_button=document.createElement('div');
-      login_button.id='userRegister';
-      login_button.innerHTML=`
-      <button id="login_page"  class="btn btn-primary" style="background:#82bdcf;" style="padding: 0.6rem 1.2rem;" style="border: 2px solid #da5767;">Login</button>
-        `;
-      login_button.addEventListener('click',()=>userLogin())
-      loginBtn.appendChild(login_button)
+  //Login button to go to userLogin()
+  const loginBtn=document.getElementById('form-button flex-row align-items-center justify-content-between')
+  const login_button=document.createElement('div');
+  login_button.id='userRegister';
+  login_button.innerHTML=`
+  <p id="register_page" class="link signup-link" style='text-decoration: underline; color:blue; cursor: pointer;'>Login</p>
+    `;
+  login_button.addEventListener('click',()=>userLogin())
+  loginBtn.appendChild(login_button)
 }
 
 export { userRegister };
