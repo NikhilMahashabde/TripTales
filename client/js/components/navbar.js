@@ -1,4 +1,5 @@
 import { renderLogout } from "./userlogoutform.js";
+import { addTripForm } from "./addTrip.js";
 
 function renderNavBar(name) {
   const navBar = document.getElementById("header-nav");
@@ -16,12 +17,16 @@ function renderNavBar(name) {
                         <li><a href="">Contact</a></li>
                         <li><h3 style="color: black">Hi ${name}</h3></li>
                         <li id="renderLogout" style="color: black">Logout</li>
+                        <li id="renderAddTrip" style="color: black">Add trip</li>
                 </ul>
             </nav>
             `;
     document
       .getElementById("renderLogout")
       .addEventListener("click", () => renderLogout());
+    document
+      .getElementById("renderAddTrip")
+      .addEventListener("click", () => addTripForm());
   } else {
     navBar.innerHTML = `
             <nav>

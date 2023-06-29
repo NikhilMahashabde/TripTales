@@ -75,4 +75,4 @@ function addTripForm() {
       });
   });
 }
-export default addTripForm;
+export { addTripForm };

@@ -47,11 +47,11 @@ function userLogin() {
     axios
       .post("/login", userData)
       .then((res) => {
-        userName = res.data.name;
-        userEmail = res.data.email;
-        isAuthenticated = res.data.isAuthenticated;
+        // userName = res.data.name;
+        // userEmail = res.data.email;
+        // isAuthenticated = res.data.isAuthenticated;
         console.log("res.data on login:", res.data);
-        renderNavBar(nameData);
+        renderNavBar(res.data.name);
         form.setAttribute("hidden", "");
         renderTripList();
         ////need user page function () to refreshing the page./////
