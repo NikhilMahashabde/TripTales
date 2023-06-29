@@ -1,31 +1,35 @@
 import bcrypt from "bcrypt";
 import User from "../model/user.js";
 
-const verifyLoggedIn = (request, response) => {
-  if (request.session.email) {
-    response.json({ message: "user successfully logged in" });
+const verifyLoggedIn = (req, res) => {
+  console.log("router erifylogin: ", req.session);
+  if (req.session.email) {
+    res.json({
+      message: "user successfully Verified logged in",
+      user: req.session.user,
+    });
   } else {
-    response.status(401).json({ message: "user is not logged in" });
+    res.status(401).json({ message: "user is not logged in" });
     return;
   }
 };
 
 //Logout
-const handleLogout = (request, response) => {
-  request.session.destroy();
-  response.json({ message: "Logout success" });
+const handleLogout = (req, res) => {
+  req.session.destroy();
+  res.json({ message: "Logout success" });
 };
 
 //login
-const handleLogin = (request, response) => {
-  console.log("request.body on login:", request.body);
-  const { email, password } = request.body;
+const handleLogin = (req, res) => {
+  console.log("req.body on login:", req.body);
+  const { email, password } = req.body;
 
- console.log ("check user login ID :",request.sessionID) 
+  console.log("check user login ID :", req.sessionID);
 
   //filed missing
   if (!email || !password) {
-    response.status(400).json({ message: "Missing Email or Password" });
+    res.status(400).json({ message: "Missing Email or Password" });
     return;
   }
 
@@ -36,18 +40,18 @@ const handleLogin = (request, response) => {
 
       //if it matched
       if (isValidPassword) {
-        request.session.email = email;
-        request.session.user = user;
-        response.json({
+        req.session.email = email;
+        req.session.user = user;
+        res.json({
           message: "Logged in Successfully",
           name: user.name,
           email: user.email,
         });
       } else {
-        response.status(401).json({ message: "Incorrect password" });
+        res.status(401).json({ message: "Incorrect password" });
       }
     } else {
-      response.status(401).json({ message: "User could not be found" });
+      res.status(401).json({ message: "User could not be found" });
     }
   });
 };

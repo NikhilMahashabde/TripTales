@@ -11,7 +11,7 @@ const getAllTrips = async (req, res) => {
 };
 
 const handleNewTrip = async (req, res) => {
-  // console.log("request.body:", req.session);
+  console.log("request.body:", req.body, req.session);
 
   const newTrip = {
     name: req.body.name,

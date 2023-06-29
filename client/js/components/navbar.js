@@ -1,13 +1,10 @@
 import { renderLogout } from "./userlogoutform.js";
+import { renderTripList } from "./tripList.js";
 
-function renderNavBar(nameData) {
+function renderNavBar(userData) {
   const navBar = document.getElementById("header-nav");
-
-  axios.get("/login")
-      .then((response)=>{
-        console.log("check loginverifycation; ",response.data)
-
-          navBar.innerHTML = `
+  if (userData) {
+    navBar.innerHTML = `
             <nav>
                 <ul id="header-icon-list">
                   
@@ -16,15 +13,16 @@ function renderNavBar(nameData) {
                         <h3>Travel Planner</h3>
                         <li><a href="/">Team</a></li>
                         <li><a href="">Contact</a></li>
-                        <li><h3 style="color: black">Hi ${nameData}</h3></li>
+                        <li><h3 style="color: black">Hi ${userData.name}</h3></li>
                         <li id="renderLogout" style="color: black">Logout</li>
                 </ul>
             </nav>
             `;
-            document.getElementById('renderLogout').addEventListener('click',()=>renderLogout())
-        }).catch(()=>{
-          
-          navBar.innerHTML = `
+    document
+      .getElementById("renderLogout")
+      .addEventListener("click", () => renderLogout());
+  } else {
+    navBar.innerHTML = `
             <nav>
                 <ul id="header-icon-list">
                   
@@ -33,11 +31,13 @@ function renderNavBar(nameData) {
                         <h3>Travel Planner</h3>
                         <li><a href="/">Team</a></li>
                         <li><a href="">Contact</a></li>
+                        <li><a href="/">Log in</a></li>
+                        <li><a href="">Register</a></li>
                       
                 </ul>
             </nav>
             `;
-})
+  }
 }
 
 export { renderNavBar };

@@ -9,6 +9,7 @@ function renderTripList() {
   page.replaceChildren(paragraph);
 
   axios.get("/api/trips").then((response) => {
+    console.log(response.data);
     const listElements = response.data.data.map((trip) => renderTrip(trip));
     page.replaceChildren(...listElements);
   });
