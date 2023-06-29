@@ -2,18 +2,29 @@ import { renderHomePage } from "/js/components/homepage.js";
 import { renderNavBar } from "/js/components/navbar.js";
 import { renderTripList } from "/js/components/tripList.js";
 
-let userData;
+// global vars.
+let userEmail;
+let userName = "";
+let isAuthenticated;
 
+//initialise state of app.
 axios
   .get("/login")
   .then((response) => {
-    userData = response.data.user;
-    renderNavBar(userData);
-    renderTripList();
+    isAuthenticated = response.data.isAuthenticated;
+
+    if (isAuthenticated) {
+      console.log("response.data on initialise:", response.data);
+      userEmail = response.data.email;
+      userName = response.data.name;
+      renderNavBar(userName);
+      renderTripList();
+    } else {
+      renderNavBar();
+      renderHomePage();
+    }
   })
-  .catch((error) => {
-    renderNavBar(userData);
-  });
+  .catch(() => {});
 
 // const backGroundImg = [
 //   // "https://res.klook.com/image/upload/Mobile/City/swox6wjsl5ndvkv5jvum.jpg",

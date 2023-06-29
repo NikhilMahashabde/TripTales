@@ -47,8 +47,10 @@ function userLogin() {
     axios
       .post("/login", userData)
       .then((res) => {
-        const nameData = res.data.name;
-        console.log(res.data);
+        userName = res.data.name;
+        userEmail = res.data.email;
+        isAuthenticated = res.data.isAuthenticated;
+        console.log("res.data on login:", res.data);
         renderNavBar(nameData);
         form.setAttribute("hidden", "");
         renderTripList();
@@ -57,19 +59,19 @@ function userLogin() {
       .catch((error) => {
         console.log(error);
 
-        if (error.response.status === 401 || error.response.status === 400) {
-          console.log(error.response);
-          const errorMessage = document.createElement("div");
-          errorMessage.innerHTML = `
-              <h2>Error: ${error.response.data.message}</h2>
-         
-            `;
-          errorMessage.style.color = "red";
-          errorMessage.style.textAlign = "center";
-          errorMessage.style.backgroundColor = "white";
+        // // if (error.response.status === 401 || error.response.status === 400) {
+        // //   console.log(error);
+        // //   const errorMessage = document.createElement("div");
+        // //   errorMessage.innerHTML = `
+        // //       <h2>Error: ${error.response.data.message}</h2>
 
-          form.appendChild(errorMessage);
-        }
+        // //     `;
+        // //   errorMessage.style.color = "red";
+        // //   errorMessage.style.textAlign = "center";
+        // //   errorMessage.style.backgroundColor = "white";
+
+        // //   form.appendChild(errorMessage);
+        // }
       });
   });
 

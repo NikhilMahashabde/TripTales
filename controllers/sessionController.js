@@ -2,14 +2,14 @@ import bcrypt from "bcrypt";
 import User from "../model/user.js";
 
 const verifyLoggedIn = (req, res) => {
-  console.log("router erifylogin: ", req.session);
   if (req.session.email) {
     res.json({
-      message: "user successfully Verified logged in",
-      user: req.session.user,
+      isAuthenticated: true,
+      email: req.session.email,
+      name: req.session.name,
     });
   } else {
-    res.status(401).json({ message: "user is not logged in" });
+    res.status(200).json({ isAuthenticated: false });
     return;
   }
 };
@@ -17,15 +17,12 @@ const verifyLoggedIn = (req, res) => {
 //Logout
 const handleLogout = (req, res) => {
   req.session.destroy();
-  res.json({ message: "Logout success" });
+  res.json({ message: "Logout success", isAuthenticated: false });
 };
 
 //login
 const handleLogin = (req, res) => {
-  console.log("req.body on login:", req.body);
   const { email, password } = req.body;
-
-  console.log("check user login ID :", req.sessionID);
 
   //filed missing
   if (!email || !password) {
@@ -41,9 +38,11 @@ const handleLogin = (req, res) => {
       //if it matched
       if (isValidPassword) {
         req.session.email = email;
+        req.session.name = user.name;
         req.session.user = user;
         res.json({
           message: "Logged in Successfully",
+          isAuthenticated: true,
           name: user.name,
           email: user.email,
         });

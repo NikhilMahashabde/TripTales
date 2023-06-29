@@ -1,9 +1,10 @@
 import { renderLogout } from "./userlogoutform.js";
-import { renderTripList } from "./tripList.js";
 
-function renderNavBar(userData) {
+function renderNavBar(name) {
   const navBar = document.getElementById("header-nav");
-  if (userData) {
+
+  console.log("name:", name);
+  if (name) {
     navBar.innerHTML = `
             <nav>
                 <ul id="header-icon-list">
@@ -13,7 +14,7 @@ function renderNavBar(userData) {
                         <h3>Travel Planner</h3>
                         <li><a href="/">Team</a></li>
                         <li><a href="">Contact</a></li>
-                        <li><h3 style="color: black">Hi ${userData.name}</h3></li>
+                        <li><h3 style="color: black">Hi ${name}</h3></li>
                         <li id="renderLogout" style="color: black">Logout</li>
                 </ul>
             </nav>
