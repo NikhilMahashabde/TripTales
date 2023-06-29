@@ -9,7 +9,7 @@ let isAuthenticated;
 
 //initialise state of app.
 axios
-  .get("/login")
+  .get("/loginstandard")
   .then((response) => {
     isAuthenticated = response.data.isAuthenticated;
 
@@ -25,6 +25,12 @@ axios
     }
   })
   .catch(() => {});
+
+const loginButton = document.getElementById("loginButton");
+
+loginButton.addEventListener("click", () => {
+  window.location.href = "/login";
+});
 
 // const backGroundImg = [
 //   // "https://res.klook.com/image/upload/Mobile/City/swox6wjsl5ndvkv5jvum.jpg",

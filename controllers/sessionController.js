@@ -8,6 +8,8 @@ const verifyLoggedIn = (req, res) => {
       email: req.session.email,
       name: req.session.name,
     });
+
+    //check req.oidc.user
   } else {
     res.status(200).json({ isAuthenticated: false });
     return;

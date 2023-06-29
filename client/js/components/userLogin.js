@@ -68,7 +68,7 @@ function userLogin() {
     };
 
     axios
-      .post("/login", userData)
+      .post("/loginstandard", userData)
       .then((res) => {
         // userName = res.data.name;
         // userEmail = res.data.email;
@@ -84,7 +84,7 @@ function userLogin() {
 
         if (error.response.status === 401 || error.response.status === 400) {
           console.log(error.response);
-          const errorDiv=document.getElementById('error_message_display')
+          const errorDiv = document.getElementById("error_message_display");
           const errorMessage = document.createElement("div");
           errorMessage.innerHTML = `
               <h2>Error: ${error.response.data.message}</h2>
@@ -94,7 +94,7 @@ function userLogin() {
           errorMessage.style.textAlign = "center";
           errorMessage.style.backgroundColor = "white";
 
-          errorDiv.replaceChildren(errorMessage,errorMessage);
+          errorDiv.replaceChildren(errorMessage, errorMessage);
         }
       });
   });
@@ -102,23 +102,22 @@ function userLogin() {
   divBox.appendChild(form);
   page.replaceChildren(divBox);
 
-  changeToSignupFormBtn()
-
-  
+  changeToSignupFormBtn();
 }
 
-function changeToSignupFormBtn(){
+function changeToSignupFormBtn() {
   //Sign up button go to "userRegister()"
-  const loginBtn=document.getElementById('form-button flex-row align-items-center justify-content-between')
-    const signup_button=document.createElement('div');
-    signup_button.id='userRegister';
-    signup_button.innerHTML=`
+  const loginBtn = document.getElementById(
+    "form-button flex-row align-items-center justify-content-between"
+  );
+  const signup_button = document.createElement("div");
+  signup_button.id = "userRegister";
+  signup_button.innerHTML = `
     <p id="register_page" class="link signup-link" style='text-decoration: underline; color:blue; cursor: pointer;'>Signup</p>
     
       `;
-    signup_button.addEventListener('click',()=>userRegister())
-    loginBtn.appendChild(signup_button)
-
+  signup_button.addEventListener("click", () => userRegister());
+  loginBtn.appendChild(signup_button);
 }
 
 export { userLogin };
