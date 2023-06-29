@@ -1,3 +1,43 @@
+# Travel Panner
+
+[TODO: short overview of project here]
+
+## Quickstart
+
+[TODO: Bullet points on how to get this app running locally]
+
+## Project layout
+
+This project roughly follows a MVC layout.
+
+```bash
+├── README.md
+├── client             # VIEW: frontend code lives here
+│   ├── css
+│   │   └── ... # css files here
+│   ├── index.html
+│   └── js
+│       └── ... # js files here
+├── config
+│   └── mongoConfig.js  # Basic settings. Probably should be top leve file...
+├── middleware
+│   └── sessions.js
+├── model               # MODEL: CRUD operations and DB schema live here
+│   ├── tripsModel.js
+│   ├── userModel.js
+│   ├── sessionController.js
+│   ├── tripsController.js
+│   └── usersController.js
+├── package-lock.json
+├── package.json
+├── routes              # CONTROLLER: our routes live here
+│   ├── api
+│   ├── login.js
+│   ├── logout.js
+│   └── register.js
+└── server.js           # App entrypoint
+```
+
 ######################################## > INSERT PROJECT NAME HERE < ###################
 
 what is our idea -
