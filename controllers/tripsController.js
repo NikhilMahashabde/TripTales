@@ -3,7 +3,7 @@ import getTips from "./getOpenaiTips.js";
 
 const getAllTrips = async (req, res) => {
   try {
-    const trips = await Trip.find();
+    const trips = await Trip.find({ userID: req.session.user._id });
     res.json({ data: trips });
   } catch (error) {
     console.log(error);
@@ -11,7 +11,7 @@ const getAllTrips = async (req, res) => {
 };
 
 const handleNewTrip = async (req, res) => {
-  // console.log("request.body:", req.session);
+  console.log("request.body:", req.body, req.session);
 
   const newTrip = {
     name: req.body.name,
