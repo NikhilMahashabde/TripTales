@@ -9,7 +9,7 @@ let isAuthenticated;
 
 //initialise state of app.
 axios
-  .get("/login")
+  .get("/api/session")
   .then((response) => {
     isAuthenticated = response.data.isAuthenticated;
 

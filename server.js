@@ -5,6 +5,10 @@ import { fileURLToPath } from "node:url";
 import mongoose from "mongoose";
 import { connectDB } from "./config/mongoConfig.js";
 import { enableSession } from "./middleware/sessions.js";
+import { auth } from "express-openid-connect";
+import { oauth2Config } from "./config/oauth2Config.js";
+import pkg from "express-openid-connect";
+const { requiresAuth } = pkg;
 
 // Routes
 import registerRoute from "./routes/register.js";
@@ -14,15 +18,17 @@ import logoutRoute from "./routes/logout.js";
 // Protected Routes
 import apiUsersRoute from "./routes/api/users.js";
 import apiTrips from "./routes/api/trips.js";
+import apiSessionRouter from "./routes/api/session.js";
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 //middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(enableSession);
+app.use(auth(oauth2Config));
 connectDB();
 
 //Public Routes
@@ -35,6 +41,11 @@ app.use("/js", express.static(path.join(__dirname, "client", "js")));
 // Protected Routes
 app.use("/api/users", apiUsersRoute);
 app.use("/api/trips", apiTrips);
+app.use("/api/session", apiSessionRouter);
+
+app.get("/profile", requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.oidc.user));
+});
 
 // Catch all 404
 app.all("*", (req, res) => {
