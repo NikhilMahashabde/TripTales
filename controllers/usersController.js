@@ -1,3 +1,4 @@
+import { response } from "express";
 import User from "../model/user.js";
 import bcrypt from "bcrypt";
 
@@ -72,5 +73,7 @@ const getAllUsers = (request, response) => {
       response.json({ users: user });
     });
 };
+
+const handleNewOauthUser = (req, response) => {};
 
 export { getAllUsers, handleNewUser };

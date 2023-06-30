@@ -18,6 +18,7 @@ import logoutRoute from "./routes/logout.js";
 // Protected Routes
 import apiUsersRoute from "./routes/api/users.js";
 import apiTrips from "./routes/api/trips.js";
+import apiSessionRouter from "./routes/api/session.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -31,11 +32,8 @@ app.use(auth(oauth2Config));
 connectDB();
 
 //Public Routes
-app.use("/test", (req, res) => {
-  console.log(req.oidc.user);
-});
 app.use("/register", registerRoute);
-app.use("/loginstandard", loginRoute);
+app.use("/login", loginRoute);
 app.use("/logout", logoutRoute);
 app.use("/", express.static(path.join(__dirname, "client"))); // static file resources
 app.use("/js", express.static(path.join(__dirname, "client", "js")));
@@ -43,17 +41,11 @@ app.use("/js", express.static(path.join(__dirname, "client", "js")));
 // Protected Routes
 app.use("/api/users", apiUsersRoute);
 app.use("/api/trips", apiTrips);
+app.use("/api/session", apiSessionRouter);
 
 app.get("/profile", requiresAuth(), (req, res) => {
   res.send(JSON.stringify(req.oidc.user));
 });
-
-// app.get("/", (req, res) => {
-//   res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
-// });
-// app.get("/profile", requiresAuth(), (req, res) => {
-//   res.send(JSON.stringify(req.oidc.user));
-// });
 
 // Catch all 404
 app.all("*", (req, res) => {

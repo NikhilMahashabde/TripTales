@@ -40,14 +40,14 @@ function userLogin() {
       <div class="line"></div>
 
       <div class="media-options">
-          <a href="#" class="field facebook">
+          <a href="/login" class="field facebook">
               <i class='bx bxl-facebook facebook-icon'></i>
               <span>Login with Facebook</span>
           </a>
       </div>
 
       <div class="media-options">
-          <a href="#" class="field google">
+          <a href="/login" class="field google">
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png" alt="" class="google-img">
               <span>Login with Google</span>
           </a>
@@ -68,7 +68,7 @@ function userLogin() {
     };
 
     axios
-      .post("/loginstandard", userData)
+      .post("/login", userData)
       .then((res) => {
         // userName = res.data.name;
         // userEmail = res.data.email;
