@@ -8,7 +8,7 @@ function userLogin() {
   const form = document.createElement("form");
 
   form.innerHTML = `
-  <section class="container forms">
+  <section class="container_user_login_signup forms">
   <div class="form login">
       <div class="form-content">
           <header id='login_signup_header'>Login</header>

@@ -26,6 +26,10 @@ axios
   })
   .catch(() => {});
 
+
+
+
+
 // const backGroundImg = [
 //   // "https://res.klook.com/image/upload/Mobile/City/swox6wjsl5ndvkv5jvum.jpg",
 //   // "https://idsb.tmgrup.com.tr/ly/uploads/images/2021/09/24/146502.jpg",

@@ -5,6 +5,7 @@ import { renderEditForm } from "./renderEditForm.js";
 //render one trip
 function renderTrip(trip) {
   const tripCard = document.createElement("div");
+  tripCard.id='tripCard';
   tripCard.classList.add("trip");
   //render trip name
   const name = document.createElement("h2");
@@ -85,6 +86,8 @@ function renderTrip(trip) {
     deleteBtn,
     editDiv
   );
+
+  tripCard.style="margin-top:100px;"
   return tripCard;
 }
 

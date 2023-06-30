@@ -9,7 +9,7 @@ function userRegister() {
   const form = document.createElement("form");
 
   form.innerHTML = `
-  <section class="container forms">
+  <section class="container_user_login_signup forms">
     <div class="form signup">
         <div class="form-content">
           <header id='login_signup_header'>Sign up</header>
@@ -63,10 +63,6 @@ function userRegister() {
   </section>
 
 `;
-
-  
-
-
 
 
   form.addEventListener("submit", (event) => {

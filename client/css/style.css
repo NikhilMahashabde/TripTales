@@ -26,7 +26,7 @@ ol[role="list"] {
   list-style: none;
 }
 
-li {
+#airplane_icon {
   list-style: "🛫";
 }
 
@@ -81,7 +81,7 @@ select {
 
 /* This part for main homepage.js part */
 
-#homepage_main_container {
+/* #homepage_main_container {
   background-color: #838375;
 }
 
@@ -90,7 +90,7 @@ body {
 }
 
 header {
-  /* margin: 15px; */
+
   background-color: rgba(251, 231, 231, 0.5);
 }
 
@@ -154,24 +154,8 @@ header {
   align-items: center;
   justify-content: center;
   margin: auto;
-}
+} */
 
-/* This part for user signup & login pages hover */
-#userLoginLink:hover {
-  color: #da5767;
-  text-decoration: none;
-}
 
-.form-control:focus {
-  color: #000000;
-  background-color: #ffffff;
-  border: 3px solid #da5767;
-  outline: 0;
-  box-shadow: none;
-}
 
-.btn-primary:hover {
-  background-color: #df8c96;
-  border-color: #df8c96;
-  transition: 0.3s;
-}
+
