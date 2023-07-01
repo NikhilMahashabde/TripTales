@@ -77,6 +77,22 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+
+.app-container{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.footer {
+  flex-shrink: 0;
+}
+
 /* END OF CSS RESET */
 
 /* This part for main homepage.js part */

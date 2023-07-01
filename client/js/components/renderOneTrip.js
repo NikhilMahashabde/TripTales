@@ -101,7 +101,7 @@ function renderTrip(trip){
     tripCard.id='tripCard';
     tripCard.classList.add("trip");
 
-    page.innerHTML=`
+    tripCard.innerHTML=`
               <div class="card mb-3" style="max-width: 900px; margin-top:100px ">
                 <div class="row g-0">
                     <div class="col-md-4">
@@ -111,13 +111,16 @@ function renderTrip(trip){
                       <div class="card-body">
                         <h5 class="card-title">${trip.name}</h5>
                         <div class="card-text">
-                        <div class="font-size-sm" ><span class="text-muted mr-2" id="startDate"></span></div>
-                        <div class="font-size-sm" ><span class="text-muted mr-2" id="endDate"></span></div>
-                        <h5 id="destinationsListId"></h5>
+                        <div class="font-size-sm" ><span class="text-muted mr-2" id="startDate-${trip._id}"></span></div>
+                        <div class="font-size-sm" ><span class="text-muted mr-2" id="endDate-${trip._id}"></span></div>
+                        <h5 id="destinationsListId-${trip._id}"></h5>
                         <p class="card-text">${trip.tips}</p>
                         <div class="card-body" id='tripCard_btn'>
+                        <div id='edit-btn-div-${trip._id}'>
                                 <button id="edit-trip-${trip._id}" type="button" >Edit trip</button>
-                                <button class="btn btn-outline-danger btn-sm btn-block mb-2" type="button" id='deleteBtn'>DELETE</button>
+                        </div>
+                                
+                                <button class="btn btn-outline-danger btn-sm btn-block mb-2" type="button" id='deleteBtn-${trip._id}'>DELETE</button>
                         </div>
                       </div>
                     </div>
@@ -125,6 +128,7 @@ function renderTrip(trip){
               </div>
 
                     `;
+                    page.appendChild(tripCard);
 
       // create variable with date settings
     const dateSettings = {
@@ -134,7 +138,7 @@ function renderTrip(trip){
       day: "numeric",
     };
     // render start date
-    const startDateAdd=document.getElementById('startDate')
+    const startDateAdd=document.getElementById(`startDate-${trip._id}`)
     const startDate = document.createElement("p");
     startDate.textContent = `Departure: ${new Date(trip.startDate).toLocaleString(
       undefined,
@@ -142,7 +146,7 @@ function renderTrip(trip){
     )}`;
     startDateAdd.appendChild(startDate)
     // render end date
-    const endDateAdd=document.getElementById('endDate')
+    const endDateAdd=document.getElementById(`endDate-${trip._id}`)
     const endDate = document.createElement("p");
     endDate.textContent = `Return: ${new Date(trip.endDate).toLocaleString(
       undefined,
@@ -154,7 +158,7 @@ function renderTrip(trip){
     // edit_itemId.repla
 
 
-    const destinationsListId=document.getElementById('destinationsListId')
+    const destinationsListId=document.getElementById(`destinationsListId-${trip._id}`)
     const destinationsList = document.createElement("ul");
     // loop through destinations array and add each destination to the list
     for (let i = 0; i < trip.destinations.length; i++) {
@@ -172,7 +176,7 @@ function renderTrip(trip){
     // page.appendChild(tripCard)
 
     //delete btn
-    const deleteBtn=document.getElementById('deleteBtn')
+    const deleteBtn=document.getElementById(`deleteBtn-${trip._id}`)
     deleteBtn.addEventListener("click", () => {
       axios.delete(`/api/trips/${trip._id}`).then((_) => {
         renderTripList();
@@ -180,13 +184,19 @@ function renderTrip(trip){
     });
   
 
-    const editBtn=document.getElementsById(`edit-trip-${trip._id}`);
+    const editBtn=document.getElementById(`edit-trip-${trip._id}`);
     console.log(editBtn)
     editBtn.addEventListener("click", (event) => {
           event.preventDefault();
           //render edit form
           renderEditForm(trip);
         });
+
+
+
+
+
+
 
         // const editBtn = document.querySelector(`.edit-trip-${trip._id}`);
         // editBtn.addEventListener("click", (event) => {

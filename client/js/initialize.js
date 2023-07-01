@@ -1,3 +1,4 @@
+import { renderFooter } from "/js/components/footer.js";
 import { renderHomePage } from "/js/components/homepage.js";
 import { renderNavBar } from "/js/components/navbar.js";
 import { renderTripList } from "/js/components/tripList.js";
@@ -19,9 +20,11 @@ axios
       userName = response.data.name;
       renderNavBar(userName);
       renderTripList();
+      renderFooter();
     } else {
       renderNavBar();
       renderHomePage();
+      
     }
   })
   .catch(() => {});

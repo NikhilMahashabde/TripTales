@@ -1,4 +1,3 @@
-import { renderNavBar } from "./navbar.js";
 import { renderTrip } from "./renderOneTrip.js";
 
 //ALL TRIPS
@@ -7,16 +6,27 @@ function renderTripList() {
   const page = document.getElementById("page");
   const paragraph = document.createElement("p");
   paragraph.textContent = "Loading";
-  page.appendChild(paragraph);
+  page.replaceChildren(paragraph);
 
-  axios.get("/api/trips").then((response) => {
-    console.log(response.data);
-    const listElements = response.data.data.map((trip) => renderTrip(trip));
-    page.replaceChildren(...listElements);
-    
+//   axios.get("/api/trips").then((response) => {
+//     console.log(response.data);
+//     const listElements = response.data.data.map((trip) => renderTrip(trip));
+//     page.replaceChildren(...listElements);
+//   });
+// }
+
+
+axios.get("/api/trips").then((response) => {
+  console.log(response.data);
+  const listElements = response.data.data.map((trip) => renderTrip(trip));
+  listElements.forEach((element) => {
+    if (element instanceof Node) {
+      page.appendChild(element);
+    }
   });
-  
-}
+  paragraph.textContent = "";
+});
 
+}
 // export module
 export { renderTripList };
