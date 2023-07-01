@@ -4,6 +4,6 @@ import { verifyLoggedIn } from "../controllers/sessionController.js";
 
 const router = express.Router();
 
-router.post("/", handleLogin).get("/", verifyLoggedIn);
+router.post("/", handleLogin);
 
 export default router;

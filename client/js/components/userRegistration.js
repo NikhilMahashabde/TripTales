@@ -46,14 +46,14 @@ function userRegister() {
       <div class="line"></div>
 
       <div class="media-options">
-          <a href="#" class="field facebook">
-              <i class='bx bxl-facebook facebook-icon'></i>
-              <span>Login with Facebook</span>
+          <a href="/login" class="field google">
+              <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="" class="google-img">
+              <span>Login with Github</span>
           </a>
       </div>
 
       <div class="media-options">
-          <a href="#" class="field google">
+          <a href="/login" class="field google">
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png" alt="" class="google-img">
               <span>Login with Google</span>
           </a>
