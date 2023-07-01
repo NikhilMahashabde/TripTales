@@ -23,12 +23,11 @@ async function getTips(destinations) {
         //below is the prompt that is sent to the API
         content: `Today is ${new Date().toISOString()}. I am planning a trip to ${destinations.join(
           ", "
-        )} and would like 3 tips per location on what to do there. Only give me the tips and nothing else. Return this as HTML using the <ul> and <li> tags.`,
+        )} and would like 3 tips per location on what to do there. Only give me the tips and nothing else. Return this as HTML using the <ul> and <li> tags. Add the strong tag for the location names, and make sure the tips are in a list and each tip is in a list item.`,
       },
     ],
   });
 
-  return chatCompletion.data.choices[0].message.content; //return the tips (or .message instead of .text)
+  return chatCompletion.data.choices[0].message.content;
 }
-
 export default getTips;
