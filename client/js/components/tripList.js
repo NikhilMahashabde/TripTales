@@ -1,22 +1,24 @@
-import { renderNavBar } from "./navbar.js";
 import { renderTrip } from "./renderOneTrip.js";
 
 //ALL TRIPS
 // render trip list
 function renderTripList() {
   const page = document.getElementById("page");
-  const paragraph = document.createElement("p");
-  paragraph.textContent = "Loading";
-  page.appendChild(paragraph);
+  const loadingDiv = document.createElement("div");
+  loadingDiv.setAttribute('class','loader')
+  page.replaceChildren(loadingDiv);
 
-  axios.get("/api/trips").then((response) => {
-    console.log(response.data);
-    const listElements = response.data.data.map((trip) => renderTrip(trip));
-    page.replaceChildren(...listElements);
-    
+axios.get("/api/trips").then((response) => {
+  console.log(response.data);
+  const listElements = response.data.data.map((trip) => renderTrip(trip));
+  listElements.forEach((element) => {
+    if (element instanceof Node) {
+      page.appendChild(element);
+    }
   });
-  
+  loadingDiv.setAttribute('class','')
+});
+
 }
 
-// export module
 export { renderTripList };

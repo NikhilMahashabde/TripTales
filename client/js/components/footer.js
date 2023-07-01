@@ -2,7 +2,7 @@ export function renderFooter(){
     const footer=document.getElementById("footer");
     footer.innerHTML=`
     <!-- Contact-->
-  <section class="contact-section bg-black" id="contact">
+  <section class="contact-section bg-black" id="contact" >
       <div class="container px-4 px-lg-5">
           <div class="row gx-4 gx-lg-5">
               <div class="col-md-4 mb-3 mb-md-0">

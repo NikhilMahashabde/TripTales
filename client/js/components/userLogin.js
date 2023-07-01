@@ -1,6 +1,7 @@
 import { renderNavBar } from "/js/components/navbar.js";
 import { userRegister } from "./userRegistration.js";
 import { renderTripList } from "./tripList.js";
+import { renderFooter } from "./footer.js";
 
 function userLogin() {
   const page = document.getElementById("page");
@@ -41,8 +42,7 @@ function userLogin() {
 
       <div class="media-options">
           <a href="/login" class="field google">
-              
-          <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="" class="google-img">
+              <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="" class="google-img">
               <span>Login with Github</span>
           </a>
       </div>
@@ -78,6 +78,7 @@ function userLogin() {
         renderNavBar(res.data.name);
         form.setAttribute("hidden", "");
         renderTripList();
+        renderFooter();
         ////need user page function () to refreshing the page./////
       })
       .catch((error) => {

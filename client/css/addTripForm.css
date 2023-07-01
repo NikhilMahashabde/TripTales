@@ -1,0 +1,139 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  }
+
+  .formbold-mb-5 {
+	margin-bottom: 20px;
+  }
+  .formbold-pt-3 {
+	padding-top: 12px;
+  }
+  .formbold-main-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 48px;
+  }
+
+  .formbold-form-wrapper {
+	margin: 0 auto;
+	max-width: 550px;
+	width: 100%;
+	background: white;
+  }
+  .formbold-form-label {
+	display: block;
+	font-weight: 500;
+	font-size: 16px;
+	color: #bbbbd4;
+	margin-bottom: 12px;
+  }
+  .formbold-form-label-2 {
+	font-weight: 600;
+	font-size: 20px;
+	margin-bottom: 20px;
+  }
+
+  .formbold-form-input {
+	width: 100%;
+	padding: 12px 24px;
+	border-radius: 6px;
+	border: 1px solid #e0e0e0;
+	background: white;
+	font-weight: 500;
+	font-size: 16px;
+	color: #6b7280;
+	outline: none;
+	resize: none;
+  }
+  .formbold-form-input:focus {
+	border-color: #80aed3;
+	box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .formbold-btn {
+	text-align: center;
+	font-size: 16px;
+	border-radius: 6px;
+	padding: 14px 32px;
+	border: none;
+	font-weight: 600;
+	background-color: #80aed3;
+	color: white;
+	cursor: pointer;
+  }
+  .formbold-btn:hover {
+	box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .formbold--mx-3 {
+	margin-left: -12px;
+	margin-right: -12px;
+  }
+  .formbold-px-3 {
+	padding-left: 12px;
+	padding-right: 12px;
+  }
+  .flex {
+	display: flex;
+  }
+  .flex-wrap {
+	flex-wrap: wrap;
+  }
+  .w-full {
+	width: 100%;
+  }
+  .formbold-radio {
+	width: 20px;
+	height: 20px;
+  }
+  .formbold-radio-label {
+	font-weight: 500;
+	font-size: 16px;
+	padding-left: 12px;
+	color: #070707;
+	padding-right: 20px;
+  }
+  .add-destinations-btn{
+	text-align: center;
+	font-size: 13px;
+	border-radius: 3px;
+	padding: 10px 28px;
+	border: none;
+	font-weight: 300;
+	background-color: #bb80d3;
+	color: white;
+	cursor: pointer;
+  }
+  .add-destinations-btn :hover{
+	box-shadow: 0px 3px 8px rgba(241, 16, 16, 0.05);
+  }
+
+  .formbold-btn a{
+	text-decoration: none;
+	color:white;
+  }
+  @media (min-width: 540px) {
+	.sm\:w-half {
+	  width: 50%;
+	}
+
+
+/* edit button csss */
+.edit-form-btn-icon{
+	text-align: center;
+	font-size: 10px;
+	border-radius: 3px;
+	padding: 7px 20px;
+	border: none;
+	font-weight: 300;
+	background-color: rgb(138, 206, 223);
+	color: white;
+	cursor: pointer;
+}
+.edit-form-btn-icon:hover{
+	background-color: rgb(163, 159, 159);
+}
+  }
