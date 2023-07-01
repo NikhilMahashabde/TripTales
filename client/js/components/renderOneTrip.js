@@ -1,5 +1,6 @@
 import { renderTripList } from "./tripList.js";
 import { renderEditForm } from "./renderEditForm.js";
+import { getUnsplashImage } from "./unsplashImages.js";
 
 //ONE TRIP
 //render one trip
