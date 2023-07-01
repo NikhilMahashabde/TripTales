@@ -1,5 +1,6 @@
 import { renderTripList } from "./tripList.js";
 import { renderEditForm } from "./renderEditForm.js";
+import {getUnsplashImage} from "./unsplashImages.js";
 
 //ONE TRIP
 //render one trip
@@ -96,6 +97,14 @@ function renderTrip(trip){
 
   const page=document.getElementById('page');
 
+  const loadUnsplashImage = async (location) => {
+    const imageUrl = await getUnsplashImage(location);  
+    const imgElm = document.createElement("img");
+    imgElm.src = imageUrl;
+    const imgPlaceholder = document.querySelector(".img-placeholder");
+    imgPlaceholder.appendChild(imgElm);
+  }
+
   // for(let i = 0; i < trip.length; i++) {
     const tripCard = document.createElement("div");
     tripCard.id='tripCard';
@@ -104,8 +113,8 @@ function renderTrip(trip){
     page.innerHTML=`
               <div class="card mb-3" style="max-width: 900px; margin-top:100px ">
                 <div class="row g-0">
-                    <div class="col-md-4">
-                      <img class="img-fluid rounded-start" src="assets/img/sampleimg.jpeg" alt="...">
+                    <div class="col-md-4 img-placeholder">
+
                     </div>
                     <div class="col-md-8" style="background-color: cream">
                       <div class="card-body">
@@ -125,7 +134,8 @@ function renderTrip(trip){
               </div>
 
                     `;
-
+      // get image from unsplash
+      loadUnsplashImage(trip.destinations[0]);
       // create variable with date settings
     const dateSettings = {
       weekday: "long",
