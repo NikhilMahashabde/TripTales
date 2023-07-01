@@ -4,17 +4,9 @@ import { renderTrip } from "./renderOneTrip.js";
 // render trip list
 function renderTripList() {
   const page = document.getElementById("page");
-  const paragraph = document.createElement("p");
-  paragraph.textContent = "Loading";
-  page.replaceChildren(paragraph);
-
-//   axios.get("/api/trips").then((response) => {
-//     console.log(response.data);
-//     const listElements = response.data.data.map((trip) => renderTrip(trip));
-//     page.replaceChildren(...listElements);
-//   });
-// }
-
+  const loadingDiv = document.createElement("div");
+  loadingDiv.setAttribute('class','loader')
+  page.replaceChildren(loadingDiv);
 
 axios.get("/api/trips").then((response) => {
   console.log(response.data);
@@ -24,9 +16,9 @@ axios.get("/api/trips").then((response) => {
       page.appendChild(element);
     }
   });
-  paragraph.textContent = "";
+  loadingDiv.setAttribute('class','')
 });
 
 }
-// export module
+
 export { renderTripList };

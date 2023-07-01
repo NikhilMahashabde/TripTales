@@ -1,7 +1,6 @@
 import { renderNavBar } from "/js/components/navbar.js";
 import { userRegister } from "./userRegistration.js";
 import { renderTripList } from "./tripList.js";
-import { renderLogout } from "./userlogoutform.js";
 import { renderFooter } from "./footer.js";
 
 function userLogin() {

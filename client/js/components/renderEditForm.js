@@ -7,27 +7,25 @@ function renderEditForm(trip) {
   //create form
   const form = document.createElement("form");
   form.innerHTML = `
-  <div id='edit-form-box-${trip._id}'>
+  <div id='edit-form-box-${trip._id}' >
           <label for="name">Name:</label><br>
           <input type="text" name="name" value="${trip.name}" required><br>
           
           <label for="start-date">Start Date: </label><br>
-          <input type="date" name="start-date" value="${
-            trip.startDate.split("T")[0]
-          }" required><br>
+          <input type="date" name="start-date" value="${trip.startDate.split("T")[0]}" required><br>
+
           <label for="end-date">End Date: </label><br>
-          <input type="date" name="end-date" value="${
-            trip.endDate.split("T")[0]
-          }" required><br>
+          <input type="date" name="end-date" value="${trip.endDate.split("T")[0]}" required><br>
   
           <label for="destinations">Destinations:</label><br>
-          <input type="text" id="destinations-${
-            trip._id
-          }" name="destinations" value=" "><button>Add More</button><br>
+          <input type="text" id="destinations-${trip._id}" name="destinations" value=" ">
+          <button class='edit-form-btn-icon' >Add More</button><br>
+
           <ul id='destinationList-${trip._id}'>
           </ul>
-          <input type="submit" value="Save Trip">
-          <button id="cancel-${trip._id}" onclick="hideForm(event)"> Cancel </button>
+
+          <input class='edit-form-btn-icon' type="submit" value="Save Trip">
+          <button class='edit-form-btn-icon' id="cancel-${trip._id}" onclick="hideForm(event)"> Cancel </button>
   </div>
 
   `;
