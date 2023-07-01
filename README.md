@@ -1,4 +1,4 @@
-## TripTales
+## Trip Tales
 
 [TODO: short overview of project here]
 
