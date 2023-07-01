@@ -1,4 +1,4 @@
-# Travel Panner
+## Trip Tales
 
 [TODO: short overview of project here]
 

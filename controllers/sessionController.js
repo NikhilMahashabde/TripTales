@@ -9,12 +9,12 @@ const verifyLoggedIn = async (req, res) => {
       email: req.session.email,
       name: req.session.name,
     });
-  } 
-   //ideally all of this should be a seperate end point with a redirect back to home ->
+  }
+
+  //ideally all of this should be a seperate end point with a redirect back to home ->
   //this is checking whether there is no session but the presence of a oauth session. if so, login the user and return app session/token
   // or register the user if they do not exist, and then return the app session token.
   if (req.oidc.user) {
-    console.log(req.oidc.user)
     try {
       let user = await User.findOne({ email: req.oidc.user.email });
       if (!user) {
@@ -83,12 +83,12 @@ const handleLogin = (req, res) => {
   User.findOne({ email: email }).then((user) => {
     if (user) {
       //compare input password and existing password match
-      if (user.passwordHash == "oauth")
-      return res.status(401).json({
-        message:
-          "Google & Github Account detected, users must log in with the Sign in links below",
-      });
 
+      if (user.passwordHash == "oauth")
+        return res.status(401).json({
+          message:
+            "Google & Github Account detected, users must log in with the Sign in links below",
+        });
       const isValidPassword = bcrypt.compareSync(password, user.passwordHash);
 
       //if it matched
