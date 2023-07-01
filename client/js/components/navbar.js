@@ -28,9 +28,7 @@ function renderNavBar(name) {
             </div>
         </div>
     </nav>
-
-
-            `;
+    `;
     document
       .getElementById("renderLogout")
       .addEventListener("click", () => renderLogout());
@@ -56,7 +54,7 @@ function renderNavBar(name) {
             </div>
         </div>
     </nav>
-            `;
+    `;
   }
 }
 

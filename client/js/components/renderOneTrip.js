@@ -1,6 +1,7 @@
 import { renderTripList } from "./tripList.js";
 import { renderEditForm } from "./renderEditForm.js";
 
+
 //ONE TRIP
 //render one trip
 function renderTrip(trip){

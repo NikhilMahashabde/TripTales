@@ -44,63 +44,64 @@ function addTripForm() {
             </form>
           </div>
         </div>
-      `;
-      const errorMessage = document.createElement("h3");
-      page.replaceChildren(form, errorMessage);
-    
-      const addMoreDestinationsButton = document.getElementById(
-        "addMoreDestinations"
-      );
-      addMoreDestinationsButton.addEventListener("click", (event) => {
-        event.preventDefault();
-        //get list elm
-        const destinationList = document.getElementById("destinationList");
-        //create new list item elm
-        const newDestination = document.createElement("li");
-        // set class name for list item
-        newDestination.className = "destination-item";
-        //set text content to value of input
-        newDestination.textContent = document.getElementById("destinations").value;
-        //append new list item to list
-        destinationList.appendChild(newDestination);
-        //clear input
-        document.getElementById("destinations").value = "";
-      });
-    
-      form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        const formData = new FormData(event.target);
-        // get destinations data and convert to array
-        // push text content to destinations array
-        const destinations = [];
-        const destinationItems = document.querySelectorAll(".destination-item");
-        // for each destination, get the text content
-        destinationItems.forEach((item) => {
-          destinations.push(item.textContent);
-        });
-        if (destinations < 1) {
-          alert("Please enter at least one destination.");
-          return;
-        }
-        const data = {
-          name: formData.get("trip-name"),
-          destinations,
-          startDate: new Date(formData.get("startDate")),
-          endDate: new Date(formData.get("endDate")),
-        };
-        console.log(data);
-        const loadingDiv = document.createElement("div");
-        loadingDiv.setAttribute('class','loader')
-        page.replaceChildren(loadingDiv);
+   `;
+   
+  const errorMessage = document.createElement("h3");
+  page.replaceChildren(form, errorMessage);
 
-        axios
-          .post("/api/trips", data)
-          .then((response) => {
-            renderTripList();
-          })
-          .catch((error) => {
-            errorMessage.textContent = "Something went wrong. Please try again.";
-          });
-      });
+  const addMoreDestinationsButton = document.getElementById(
+    "addMoreDestinations"
+  );
+  addMoreDestinationsButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    //get list elm
+    const destinationList = document.getElementById("destinationList");
+    //create new list item elm
+    const newDestination = document.createElement("li");
+    // set class name for list item
+    newDestination.className = "destination-item";
+    //set text content to value of input
+    newDestination.textContent = document.getElementById("destinations").value;
+    //append new list item to list
+    destinationList.appendChild(newDestination);
+    //clear input
+    document.getElementById("destinations").value = "";
+  });
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    // get destinations data and convert to array
+    // push text content to destinations array
+    const destinations = [];
+    const destinationItems = document.querySelectorAll(".destination-item");
+    // for each destination, get the text content
+    destinationItems.forEach((item) => {
+      destinations.push(item.textContent);
+    });
+    if (destinations < 1) {
+      alert("Please enter at least one destination.");
+      return;
     }
+    const data = {
+      name: formData.get("trip-name"),
+      destinations,
+      startDate: new Date(formData.get("startDate")),
+      endDate: new Date(formData.get("endDate")),
+    };
+    console.log(data);
+    const loadingDiv = document.createElement("div");
+    loadingDiv.setAttribute('class','loader')
+    page.replaceChildren(loadingDiv);
+
+    axios
+      .post("/api/trips", data)
+      .then((response) => {
+        renderTripList();
+      })
+      .catch((error) => {
+        errorMessage.textContent = "Something went wrong. Please try again.";
+      });
+   });
+}
 export { addTripForm };

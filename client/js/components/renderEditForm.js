@@ -7,7 +7,7 @@ function renderEditForm(trip) {
   //create form
   const form = document.createElement("form");
   form.innerHTML = `
-  <div id='edit-form-box-${trip._id}' >
+      <div id='edit-form-box-${trip._id}' >
           <label for="name">Name:</label><br>
           <input type="text" name="name" value="${trip.name}" required><br>
           
@@ -25,8 +25,8 @@ function renderEditForm(trip) {
           </ul>
 
           <input class='edit-form-btn-icon' type="submit" value="Save Trip">
-          <button class='edit-form-btn-icon' id="cancel-${trip._id}" onclick="hideForm(event)"> Cancel </button>
-  </div>
+          <button class='edit-form-btn-icon'> <a  href="/" style="text-decoration:none; color:red;"> Cancel </a> </button>
+      </div>
 
   `;
 
@@ -68,10 +68,10 @@ function renderEditForm(trip) {
     destinationItems.forEach((item) => {
       destinations.push(item.textContent);
     });
-    // if (destinationItems.length < 1) {
-    //   alert("Please enter at least one destination.");
-    //   return;
-    // }
+    if (destinationItems.length < 1) {
+      alert("Please enter at least one destination.");
+      return;
+    }
     const data = {
       name: formData.get("name"),
       destinations,
@@ -91,9 +91,11 @@ function renderEditForm(trip) {
   document.getElementById(`edit-btn-div-${trip._id}`).replaceChildren(form);
 }
 
-function hideForm(event){
-  event.preventDefault();
-  document.getElementById(`edit-form-box-${trip._id}`).setAttribute('hidden','')
-}
+//This was "cancel button function however error code and this code crash."
+//HTML side:   <button class='edit-form-btn-icon' id="cancel-${trip._id}" onclick="hideForm(event)"> Cancel </button>
+// function hideForm(event){
+//   event.preventDefault();
+//   document.getElementById(`edit-form-box-${trip._id}`).setAttribute('hidden','')
+// }
 
 export { renderEditForm };
