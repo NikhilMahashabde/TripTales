@@ -1,5 +1,5 @@
 import { renderTripList } from "./tripList.js";
-import { getUnsplashImage } from "./unsplashImages.js";
+// import { getUnsplashImage } from "./unsplashImages.js";
 
 function addTripForm() {
   const page = document.getElementById("page");
