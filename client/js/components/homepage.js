@@ -15,8 +15,8 @@ function renderHomePage() {
       <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
           <div class="d-flex justify-content-center">
               <div class="text-center">
-                  <h1 class="mx-auto my-0 text-uppercase">Project3</h1>
-                  <h2 class="text-white-50 mx-auto mt-2 mb-5">~ Travel Planner 2023 with Open AI</h2>
+                  <h1 class="mx-auto my-0 text-uppercase" > TripTales </h1>
+                  <h2 class="text-white-50 mx-auto mt-2 mb-5"> ~ with Open AI ~ </h2>
                   <a class="btn btn-primary" ><p id="userRegister" style="width:150px">Sign up</p></a>
                   <a class="btn btn-primary"><p id="userLogin" style="width:150px">Login</p></a>
               </div>
@@ -28,7 +28,7 @@ function renderHomePage() {
       <div class="container px-4 px-lg-5">
           <div class="row gx-4 gx-lg-5 justify-content-center">
               <div class="col-lg-8">
-                  <h2 class="text-white mb-4">Make own travel plan with AI</h2>
+                  <h2 class="text-white mb-4">Make own travel plan/Tips with AI</h2>
                   <p class="text-white-50">
                   what is our idea -
 
