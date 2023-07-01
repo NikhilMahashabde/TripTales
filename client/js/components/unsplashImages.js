@@ -1,5 +1,5 @@
-function getUnsplashImage(trip) {
-  const url = `https://api.unsplash.com/search/photos/random?query=${trip.destination[0]}&client_id=Iy-9nBKpFYGdxpRDphCLXT_rdtdPdF1eGkPeTj7UEQA&orientation=landscape&count=1`;
+function getUnsplashImage(location) {
+  const url = `https://api.unsplash.com/photos/random?query=${location}&client_id=Iy-9nBKpFYGdxpRDphCLXT_rdtdPdF1eGkPeTj7UEQA&orientation=landscape&count=1`;
 
   return fetch(url)
     .then((res) => res.json())
