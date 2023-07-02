@@ -14,7 +14,8 @@ function renderTrip(trip){
     const imageUrl = await getUnsplashImage(location);  
     const imgElm = document.createElement("img");
     imgElm.src = imageUrl;
-    const imgPlaceholder = document.querySelector(".img-placeholder");
+    // const imgPlaceholder = document.querySelector(".img-placeholder");
+    const imgPlaceholder = document.getElementById(`img-unsplash-${trip._id}`);
     imgPlaceholder.appendChild(imgElm);
   }
 
@@ -26,7 +27,7 @@ function renderTrip(trip){
     tripCard.innerHTML=`
               <div class="card mb-3" style="max-width: 900px; margin-top:100px ">
                 <div class="row g-0">
-                    <div class="col-md-4 img-placeholder">
+                    <div class="col-md-4 img-placeholder" id="img-unsplash-${trip._id}">
 
                     </div>
                     <div class="col-md-8" style="background-color: cream">
