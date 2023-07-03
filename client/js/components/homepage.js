@@ -100,12 +100,12 @@ function renderHomePage() {
   `;
 
   document
-  .getElementById("userRegister")
-  .addEventListener("click", () => userRegister());
+    .getElementById("userRegister")
+    .addEventListener("click", () => userRegister());
 
   document
-  .getElementById("userLogin")
-  .addEventListener("click", () => userLogin());
+    .getElementById("userLogin")
+    .addEventListener("click", () => userLogin());
 }
 
 export { renderHomePage };

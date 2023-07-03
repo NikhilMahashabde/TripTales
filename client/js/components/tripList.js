@@ -5,20 +5,18 @@ import { renderTrip } from "./renderOneTrip.js";
 function renderTripList() {
   const page = document.getElementById("page");
   const loadingDiv = document.createElement("div");
-  loadingDiv.setAttribute('class','loader')
+  loadingDiv.setAttribute("class", "loader");
   page.replaceChildren(loadingDiv);
 
-axios.get("/api/trips").then((response) => {
-  console.log(response.data);
-  const listElements = response.data.data.map((trip) => renderTrip(trip));
-  listElements.forEach((element) => {
-    if (element instanceof Node) {
-      page.appendChild(element);
-    }
+  axios.get("/api/trips").then((response) => {
+    const listElements = response.data.data.map((trip) => renderTrip(trip));
+    listElements.forEach((element) => {
+      if (element instanceof Node) {
+        page.appendChild(element);
+      }
+    });
+    loadingDiv.setAttribute("class", "");
   });
-  loadingDiv.setAttribute('class','')
-});
-
 }
 
 export { renderTripList };

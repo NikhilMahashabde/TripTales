@@ -15,7 +15,6 @@ axios
     isAuthenticated = response.data.isAuthenticated;
 
     if (isAuthenticated) {
-      console.log("response.data on initialise:", response.data);
       userEmail = response.data.email;
       userName = response.data.name;
       renderNavBar(userName);
@@ -25,13 +24,6 @@ axios
       renderNavBar();
       renderHomePage();
       renderFooter();
-      
     }
   })
   .catch(() => {});
-
-
-
-
-
-

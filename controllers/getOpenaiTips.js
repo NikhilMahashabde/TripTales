@@ -28,7 +28,7 @@ async function getTips(destinations) {
     ],
   });
 
-  return chatCompletion.data.choices[0].message.content; //return the tips (or .message instead of .text)
+  return chatCompletion.data.choices[0].message.content;
 }
 
 export default getTips;
