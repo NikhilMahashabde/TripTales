@@ -23,7 +23,7 @@ async function getTips(destinations) {
         //below is the prompt that is sent to the API
         content: `Today is ${new Date().toISOString()}. I am planning a trip to ${destinations.join(
           ", "
-        )} and would like 3 tips per location on what to do there. Only give me the tips and nothing else. Return this as HTML using the <ul> and <li> tags. And the strong tag for the location name. Make sure the html is properly formatted and consistent throughout.`,
+        )} and would like 3 tips per location on what to do there. Only give me the tips and nothing else. Return this as HTML using the <ul> and <strong> tags for the location name, and a <li> tag for each of the tips given. Make sure the html is properly formatted and consistent throughout.`,
       },
     ],
   });

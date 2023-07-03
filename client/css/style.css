@@ -26,10 +26,6 @@ ol[role="list"] {
   list-style: none;
 }
 
-#airplane_icon {
-  list-style: "🛫";
-}
-
 /* Set core root defaults */
 html:focus-within {
   scroll-behavior: smooth;

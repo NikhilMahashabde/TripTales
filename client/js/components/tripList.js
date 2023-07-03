@@ -4,6 +4,12 @@ import { renderTrip } from "./renderOneTrip.js";
 // render trip list
 function renderTripList() {
   const page = document.getElementById("page");
+  //title
+  const yourTrips = document.createElement("h1");
+  yourTrips.setAttribute("class", "text-center");
+  yourTrips.innerText = "Your Trips:";
+  page.appendChild(yourTrips);
+  //trip details
   const loadingDiv = document.createElement("div");
   loadingDiv.setAttribute("class", "loader");
   page.replaceChildren(loadingDiv);

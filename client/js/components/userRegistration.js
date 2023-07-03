@@ -16,7 +16,7 @@ function userRegister() {
          
           <form action="#">
               <div class="field input-field">
-                  <input type="text" placeholder="User name" class="input" name="userName">
+                  <input type="text" placeholder="Name" class="input" name="userName">
               </div>
               <div class="field input-field">
                   <input type="email" placeholder="Email" class="input" name="userEmail">
