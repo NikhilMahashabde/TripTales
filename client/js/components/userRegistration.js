@@ -1,6 +1,7 @@
 import { userLogin } from "./userLogin.js";
 import { renderHomePage } from "/js/components/homepage.js";
 import { renderNavBar } from "/js/components/navbar.js";
+import { renderTripList } from "./tripList.js";
 
 function userRegister() {
   const page = document.getElementById("page");
@@ -79,17 +80,20 @@ function userRegister() {
       axios
         .post("/register", userData)
         .then((res) => {
+
           const nameData = res.body.name;
           renderHomePage();
           renderNavBar(nameData);
           console.log(res.data);
+
         })
         .catch((error) => {
-          console.log(error);
 
           if (error.response.status === 400) {
-            console.log(error.response);
-            const errorDiv = document.getElementById("error_message_display");
+
+
+            const errorDiv=document.getElementById('error_message_display')
+
             const errorMessage = document.createElement("div");
             errorMessage.innerHTML = `
               
