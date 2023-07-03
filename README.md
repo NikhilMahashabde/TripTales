@@ -46,8 +46,8 @@ Trip Tales is built using the following technologies and frameworks:
 - Express.js: version "^4.18.2"
 - Express sessions: version "^1.17.3"
 - Bootstrap: version 5.2.3
-- OpenAI: version [X.X.X]
-- Mongoose: version [X.X.X]
+- OpenAI
+- Mongoose
 - MongoDB: version 5.6
 
 Please ensure you have these dependencies installed before running Trip Tales.
