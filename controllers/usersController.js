@@ -19,28 +19,28 @@ const handleNewUser = async (request, response) => {
     }
     //bad password
     //password needs to be more than 8 characters
-    else if (password.length < 8) {
+     if (password.length < 8) {
       response
         .status(400)
         .json({ message: "Password needs a minimum of  8 characters" });
       return;
     }
     //needs to includes at least one lowercase
-    else if (!/[A-Z]/.test(password)) {
+    if (!/[A-Z]/.test(password)) {
       response.status(400).json({
         message: "Your password needs at least one uppercase letter.",
       });
       return;
     }
     //needs to includes at least one Uppercase
-    else if (!/[a-z]/.test(password)) {
+     if (!/[a-z]/.test(password)) {
       response.status(400).json({
         message: "Your password needs at least one lowercase letter.",
       });
       return;
     }
     //needs to includes at least one digit
-    else if (!/[0-9]/.test(password)) {
+    if (!/[0-9]/.test(password)) {
       response
         .status(400)
         .json({ message: "Your password needs at least one number." });
@@ -77,7 +77,7 @@ const handleNewUser = async (request, response) => {
 // get all users
 const getAllUsers = (request, response) => {
   User.find()
-    .toArray()
+    //.toArray()
     .then((user) => {
       response.json({ users: user });
     });
