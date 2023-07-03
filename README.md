@@ -24,6 +24,11 @@ Clone this repo locally, and then run the following commands in your terminal:
 
 ```bash
 npm install
+```
+
+To run the app:
+
+```bash
 nodemon server.js
 ```
 
