@@ -4,11 +4,10 @@ function addTripForm() {
   const page = document.getElementById("page");
   const form = document.createElement("div");
   form.innerHTML = `
-              
+        <br>     
         <div class="formbold-main-wrapper">
           <div class="formbold-form-wrapper">
             <form action="https://formbold.com/s/FORM_ID" method="POST" name="add-trip-form">
-              <h1 style="text-align: center;">New Trip</h1><br>
               <div id="error-message-pop"></div>
                 <div class="formbold-mb-5">
                     <label for="trip-name" class="formbold-form-label"> Name :</label>
@@ -32,7 +31,8 @@ function addTripForm() {
             
                 <div class="formbold-mb-5">
                     <label for="destinations" class="formbold-form-label"> Destination :</label>
-                    <input type="text" name="destinations" class="formbold-form-input" id="destinations" required/>
+                    <input type="text" name="destinations" class="formbold-form-input" id="destinations"/>
+                    <div id="addMoreBtnSpacer"></div>
                     <button id="addMoreDestinations" class="add-destinations-btn">Add More</button><br>
                     <ul id="destinationList">
                 </div>
@@ -46,59 +46,57 @@ function addTripForm() {
           </div>
         </div>
    `;
-   
+
   const errorMessage = document.createElement("h3");
   page.replaceChildren(form, errorMessage);
 
+  const addMoreDestinationsButton = document.getElementById(
+    "addMoreDestinations"
+  );
+  const inputDestination = document.getElementById("destinations");
+  const errorDiv = document.getElementById("error-message-pop");
 
+  //if there is no input value button should be enabled
+  let buttonEnabled = false;
 
-const addMoreDestinationsButton = document.getElementById("addMoreDestinations");
-const inputDestination = document.getElementById("destinations");
-const errorDiv=document.getElementById("error-message-pop")
-
-//if there is no input value button should be enabled
-let buttonEnabled = false; 
-
-inputDestination.addEventListener("input", stateHandle);
-function stateHandle() {
-  const currentinputValue = inputDestination.value.trim();
-  if (currentinputValue === "") {
-    buttonEnabled = false;
-  } else {
-    buttonEnabled = true;
+  inputDestination.addEventListener("input", stateHandle);
+  function stateHandle() {
+    const currentinputValue = inputDestination.value.trim();
+    if (currentinputValue === "") {
+      buttonEnabled = false;
+    } else {
+      buttonEnabled = true;
+    }
   }
-}
 
-addMoreDestinationsButton.addEventListener("click", (event) => {
-  event.preventDefault();
+  addMoreDestinationsButton.addEventListener("click", (event) => {
+    event.preventDefault();
 
-  if (buttonEnabled) {
-    errorDiv.setAttribute('hidden','')
-    // Get list element
-    const destinationList = document.getElementById("destinationList");
-    // Create new list item element
-    const newDestination = document.createElement("li");
-    // Set class name for list item
-    newDestination.className = "destination-item";
-    // Set text content to the value of the input
-    newDestination.textContent = inputDestination.value;
-    // Append new list item to the list
-    destinationList.appendChild(newDestination);
-    // Clear input
-    inputDestination.value = "";
-    // Disable the button after adding a destination
-    buttonEnabled = false;
-  }
-  else{
-    //empty value clicked button pop up error message
-    errorDiv.removeAttribute('hidden','')
-    const errorMessage = document.createElement('p');
-    errorMessage.innerHTML="Please input some destinations";
-    errorMessage.style='color:red; text-align: center;';
-    errorDiv.replaceChildren(errorMessage,errorMessage)
-  }
-});
-
+    if (buttonEnabled) {
+      errorDiv.setAttribute("hidden", "");
+      // Get list element
+      const destinationList = document.getElementById("destinationList");
+      // Create new list item element
+      const newDestination = document.createElement("li");
+      // Set class name for list item
+      newDestination.className = "destination-item";
+      // Set text content to the value of the input
+      newDestination.textContent = inputDestination.value;
+      // Append new list item to the list
+      destinationList.appendChild(newDestination);
+      // Clear input
+      inputDestination.value = "";
+      // Disable the button after adding a destination
+      buttonEnabled = false;
+    } else {
+      //empty value clicked button pop up error message
+      errorDiv.removeAttribute("hidden", "");
+      const errorMessage = document.createElement("p");
+      errorMessage.innerHTML = "Please enter at least one destination.";
+      errorMessage.style = "color:red; text-align: center;";
+      errorDiv.replaceChildren(errorMessage, errorMessage);
+    }
+  });
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -123,7 +121,7 @@ addMoreDestinationsButton.addEventListener("click", (event) => {
     };
     console.log(data);
     const loadingDiv = document.createElement("div");
-    loadingDiv.setAttribute('class','loader')
+    loadingDiv.setAttribute("class", "loader");
     page.replaceChildren(loadingDiv);
 
     axios
@@ -134,19 +132,15 @@ addMoreDestinationsButton.addEventListener("click", (event) => {
       .catch((error) => {
         errorMessage.textContent = "Something went wrong. Please try again.";
       });
-   });
+  });
 
-// cancel button to back renderTripList page
-   const cancelBtn = document.getElementById('cancelBtn');
-   cancelBtn.addEventListener('click', (event) => {
-     event.preventDefault();
-     const page = document.getElementById("page");
-     page.innerHTML = renderTripList();
-   });
-
+  // cancel button to back renderTripList page
+  const cancelBtn = document.getElementById("cancelBtn");
+  cancelBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    const page = document.getElementById("page");
+    page.innerHTML = renderTripList();
+  });
 }
 
-
 export { addTripForm };
-
-

@@ -3,7 +3,6 @@ import { renderHomePage } from "/js/components/homepage.js";
 import { renderNavBar } from "/js/components/navbar.js";
 import { renderTripList } from "./tripList.js";
 
-
 function userRegister() {
   const page = document.getElementById("page");
   const divBox = document.createElement("div");
@@ -18,7 +17,7 @@ function userRegister() {
          
           <form action="#">
               <div class="field input-field">
-                  <input type="text" placeholder="User name" class="input" name="userName">
+                  <input type="text" placeholder="Name" class="input" name="userName">
               </div>
               <div class="field input-field">
                   <input type="email" placeholder="Email" class="input" name="userEmail">
@@ -40,7 +39,7 @@ function userRegister() {
 
 
           <div class="form-link">
-              <span id='form-button flex-row align-items-center justify-content-between'>Don't have an account? </span>
+              <span id='form-button flex-row align-items-center justify-content-between'>Already have an account? </span>
           </div>
       </div>
 
@@ -65,7 +64,6 @@ function userRegister() {
 
 `;
 
-
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const formData = new FormData(form);
@@ -82,16 +80,20 @@ function userRegister() {
       axios
         .post("/register", userData)
         .then((res) => {
-          const nameData=res.data.user.name
-          renderTripList();
+
+          const nameData = res.body.name;
+          renderHomePage();
           renderNavBar(nameData);
-          
+          console.log(res.data);
+
         })
         .catch((error) => {
 
           if (error.response.status === 400) {
 
+
             const errorDiv=document.getElementById('error_message_display')
+
             const errorMessage = document.createElement("div");
             errorMessage.innerHTML = `
               
@@ -100,45 +102,46 @@ function userRegister() {
             `;
             errorMessage.style.color = "red";
             errorMessage.style.textAlign = "center";
-            errorMessage.style.backgroundColor="white"
+            errorMessage.style.backgroundColor = "white";
 
-            errorDiv.replaceChildren(errorMessage,errorMessage);
+            errorDiv.replaceChildren(errorMessage, errorMessage);
           }
         });
 
       //if confirm password value & password value not matching
     } else {
-      const errorDiv=document.getElementById('error_message_display')
+      const errorDiv = document.getElementById("error_message_display");
       const errorMessage = document.createElement("div");
- 
+
       errorMessage.innerHTML = `
               <h2>Passwords are not matching</h2>
             `;
       errorMessage.style.color = "red";
       errorMessage.style.textAlign = "center";
-      errorMessage.style.backgroundColor="white"
+      errorMessage.style.backgroundColor = "white";
 
-      errorDiv.replaceChildren(errorMessage,errorMessage)
+      errorDiv.replaceChildren(errorMessage, errorMessage);
     }
   });
 
   divBox.appendChild(form);
   page.replaceChildren(divBox);
 
-
-  changeToLoginFormBtn()
+  changeToLoginFormBtn();
 }
 
-function changeToLoginFormBtn(){
+function changeToLoginFormBtn() {
   //Login button to go to userLogin()
-  const loginBtn=document.getElementById('form-button flex-row align-items-center justify-content-between')
-  const login_button=document.createElement('div');
-  login_button.id='userRegister';
-  login_button.innerHTML=`
+  const loginBtn = document.getElementById(
+    "form-button flex-row align-items-center justify-content-between"
+  );
+  const login_button = document.createElement("div");
+  login_button.id = "userRegister";
+  login_button.innerHTML = `
   <p id="register_page" class="link signup-link" style='text-decoration: underline; color:blue; cursor: pointer;'>Login</p>
     `;
-  login_button.addEventListener('click',()=>userLogin())
-  loginBtn.appendChild(login_button)
+  login_button.addEventListener("click", () => userLogin());
+  loginBtn.appendChild(login_button);
 }
 
 export { userRegister };

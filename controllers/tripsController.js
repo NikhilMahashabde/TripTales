@@ -45,6 +45,7 @@ const handleEditTrip = async (req, res) => {
     destinations: req.body.destinations ?? undefined,
     startDate: req.body.startDate ?? undefined,
     endDate: req.body.endDate ?? undefined,
+    tips: await getTips(req.body.destinations),
   };
 
   try {
