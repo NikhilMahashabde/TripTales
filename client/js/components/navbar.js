@@ -4,7 +4,6 @@ import { addTripForm } from "./addTrip.js";
 function renderNavBar(name) {
   const navBar = document.getElementById("header-nav");
 
-  console.log("name:", name);
   if (name) {
     navBar.innerHTML = `
     <!-- Navigation-->
@@ -17,12 +16,9 @@ function renderNavBar(name) {
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item" id="airplane_icon"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item" id="airplane_icon"><a  class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item" id="airplane_icon"><a class="nav-link" href="#contact">Contact</a></li>
-                    <li class="nav-item"><h3 class="nav-link" style="color: black">Hi ${name}</h3></li>
-                    <li class="nav-link" id="renderLogout" style="color: black">Logout</li>
-                    <li class="nav-link" id="renderAddTrip" style="color: black">Add trip</li>
+                    <li class="nav-item"><a class="nav-link" style="color: black">Hi ${name}!</a></li>
+                    <li class="nav-item" id="renderAddTrip"><a class="nav-link" href="" style="color: black">Add Trip</a></li>
+                    <li class="nav-item" id="renderLogout"><a class="nav-link" href="" style="color: black">Logout</a></li>
 
                 </ul>
             </div>
@@ -34,7 +30,10 @@ function renderNavBar(name) {
       .addEventListener("click", () => renderLogout());
     document
       .getElementById("renderAddTrip")
-      .addEventListener("click", () => addTripForm());
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        addTripForm();
+      });
   } else {
     navBar.innerHTML = `
     <!-- Navigation-->
