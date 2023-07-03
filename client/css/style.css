@@ -26,10 +26,6 @@ ol[role="list"] {
   list-style: none;
 }
 
-#airplane_icon {
-  list-style: "🛫";
-}
-
 /* Set core root defaults */
 html:focus-within {
   scroll-behavior: smooth;
@@ -79,7 +75,7 @@ select {
 }
 
 /* For footer part */
-.app-container{
+.app-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -96,7 +92,7 @@ select {
   margin: auto;
   margin-bottom: 200px;
   margin-top: 200px;
-  border: 20px solid #EAF0F6;
+  border: 20px solid #eaf0f6;
   border-radius: 50%;
   border-top: 20px solid #59acff;
   width: 200px;
@@ -105,15 +101,21 @@ select {
 }
 
 @keyframes spinner {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Trip card each div box css position */
-.each-trip-container{
+.each-trip-container {
   display: flex;
   justify-content: center;
- 
 }
 
-
+/* ADD TRIP FORM */
+#addMoreBtnSpacer {
+  margin-top: 0.8rem;
+}
