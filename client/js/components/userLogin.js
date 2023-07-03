@@ -1,6 +1,7 @@
 import { renderNavBar } from "/js/components/navbar.js";
 import { userRegister } from "./userRegistration.js";
 import { renderTripList } from "./tripList.js";
+import { renderFooter } from "./footer.js";
 
 function userLogin() {
   const page = document.getElementById("page");
@@ -8,7 +9,7 @@ function userLogin() {
   const form = document.createElement("form");
 
   form.innerHTML = `
-  <section class="container forms">
+  <section class="container_user_login_signup forms">
   <div class="form login">
       <div class="form-content">
           <header id='login_signup_header'>Login</header>
@@ -40,14 +41,14 @@ function userLogin() {
       <div class="line"></div>
 
       <div class="media-options">
-          <a href="/login" class="field facebook">
-              <i class='bx bxl-facebook facebook-icon'></i>
-              <span>Login with Facebook</span>
+          <a href="/login" class="field google">
+              <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="" class="google-img">
+              <span>Login with Github</span>
           </a>
       </div>
 
       <div class="media-options">
-          <a href="/login" class="field google">
+        <a href="/login" class="field google">
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png" alt="" class="google-img">
               <span>Login with Google</span>
           </a>
@@ -77,6 +78,7 @@ function userLogin() {
         renderNavBar(res.data.name);
         form.setAttribute("hidden", "");
         renderTripList();
+        renderFooter();
         ////need user page function () to refreshing the page./////
       })
       .catch((error) => {
@@ -84,7 +86,7 @@ function userLogin() {
 
         if (error.response.status === 401 || error.response.status === 400) {
           console.log(error.response);
-          const errorDiv = document.getElementById("error_message_display");
+          const errorDiv=document.getElementById("error_message_display")
           const errorMessage = document.createElement("div");
           errorMessage.innerHTML = `
               <h2>Error: ${error.response.data.message}</h2>
@@ -103,21 +105,22 @@ function userLogin() {
   page.replaceChildren(divBox);
 
   changeToSignupFormBtn();
+
+  
 }
 
 function changeToSignupFormBtn() {
   //Sign up button go to "userRegister()"
-  const loginBtn = document.getElementById(
-    "form-button flex-row align-items-center justify-content-between"
-  );
+  const loginBtn = document.getElementById("form-button flex-row align-items-center justify-content-between");
   const signup_button = document.createElement("div");
   signup_button.id = "userRegister";
   signup_button.innerHTML = `
     <p id="register_page" class="link signup-link" style='text-decoration: underline; color:blue; cursor: pointer;'>Signup</p>
     
       `;
-  signup_button.addEventListener("click", () => userRegister());
-  loginBtn.appendChild(signup_button);
+    signup_button.addEventListener('click', () => userRegister());
+     loginBtn.appendChild(signup_button);
+
 }
 
 export { userLogin };

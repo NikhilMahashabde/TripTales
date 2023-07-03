@@ -49,6 +49,10 @@ const verifyLoggedIn = async (req, res) => {
   return res.status(200).json({ isAuthenticated: false });
 };
 
+
+
+
+
 //Logout
 const handleLogout = (req, res) => {
   req.session.destroy();

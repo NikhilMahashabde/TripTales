@@ -75,5 +75,4 @@ const getAllUsers = (request, response) => {
 };
 
 const handleNewOauthUser = (req, response) => {};
-
 export { getAllUsers, handleNewUser };
