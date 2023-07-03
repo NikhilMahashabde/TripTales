@@ -44,6 +44,6 @@ export function renderFooter(){
       </div>
   </section>
   <!-- Footer-->
-  <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">GA Team Project3 2023</div></footer>
+  <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Trip Tales ${new Date().getFullYear()}</div></footer>
 `;
 }

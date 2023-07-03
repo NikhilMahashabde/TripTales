@@ -2,8 +2,8 @@ import { response } from "express";
 import User from "../model/user.js";
 import bcrypt from "bcrypt";
 
-const handleNewUser = (request, response) => {
-  console.log("request.body:", request.body);
+const handleNewUser = async (request, response) => {
+
   const { email, password, name } = request.body;
   //filed missing
   if (!name || !email || !password) {
@@ -12,7 +12,7 @@ const handleNewUser = (request, response) => {
   }
 
   //email duplicate error
-  User.findOne({ email: email }).then((user) => {
+  User.findOne({ email: email }).then(async (user) => {
     if (user) {
       response.status(400).json({ message: "Email already exist" });
       return;
@@ -46,22 +46,31 @@ const handleNewUser = (request, response) => {
         .json({ message: "Your password needs at least one number." });
       return;
     }
-    console.log(password);
-    //create has password
+
     const hashPassword = bcrypt.hashSync(
       request.body.password,
       bcrypt.genSaltSync()
     );
-    console.log(hashPassword);
+
 
     //insert (register) user data into collection "users"
-    User.create({
-      name: name,
-      email: email,
-      passwordHash: hashPassword,
-    }).then(() => {
-      response.json({ message: "New account created success" });
-    });
+
+    try { 
+      const newUser = await User.create({
+        name: name,
+        email: email,
+        passwordHash: hashPassword,
+      })
+
+      request.session.email = newUser.email;
+      request.session.name = newUser.name;
+      request.session.user = newUser;
+      response.json({ message: "New account created success", user: newUser});
+
+    } catch (error) {
+      console.log(error)
+      response.status(400).json({ Error: "New account created unknown error"});
+    };
   });
 };
 
@@ -74,5 +83,5 @@ const getAllUsers = (request, response) => {
     });
 };
 
-const handleNewOauthUser = (req, response) => {};
+
 export { getAllUsers, handleNewUser };
