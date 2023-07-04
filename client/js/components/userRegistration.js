@@ -64,6 +64,7 @@ function userRegister() {
 
 `;
 
+///////////////////
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const formData = new FormData(form);
@@ -80,16 +81,20 @@ function userRegister() {
       axios
         .post("/register", userData)
         .then((res) => {
-
-          const nameData = res.body.name;
-          renderHomePage();
+          console.log("message",res.data)
+          console.log("this is user details",res.config.data)
+        
+          const nameDataGet=res.config.data
+          const parsedData = JSON.parse(nameDataGet);
+          const nameData = parsedData.name;
+     
+          renderTripList()
           renderNavBar(nameData);
-          console.log(res.data);
-
+          console.log("new user name",nameData);
         })
         .catch((error) => {
 
-          if (error.response.status === 400) {
+          if (error.response && error.response.status === 400) {
 
 
             const errorDiv=document.getElementById('error_message_display')

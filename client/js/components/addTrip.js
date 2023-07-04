@@ -7,6 +7,7 @@ function addTripForm() {
         <br>     
         <div class="formbold-main-wrapper">
           <div class="formbold-form-wrapper">
+            <h2 style="text-align:center; margin-top:100px;">Create your trip</h2>
             <form action="https://formbold.com/s/FORM_ID" method="POST" name="add-trip-form">
               <div id="error-message-pop"></div>
                 <div class="formbold-mb-5">
